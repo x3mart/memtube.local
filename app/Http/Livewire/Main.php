@@ -13,11 +13,11 @@ class Main extends Component
 
     public function mount()
     {
-        $this->user = $this->setUser();
+        $this->user = $this->setUserData();
         $this->videos = Video::all()->sortByDesc('created_at')->take(8);
     }
 
-    protected function setUser()
+    protected function setUserData()
     {
         if(auth()->user()){
             $this->user = User::find(auth()->user()->id);
