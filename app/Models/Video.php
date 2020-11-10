@@ -37,4 +37,12 @@ class Video extends Model
     {
         return $this->belongsToMany('App\Models\User', 'downloads');
     }
+
+    /**
+     * Get Users who views this Video
+     */
+    public function whoViews()
+    {
+        return $this->belongsToMany('App\Models\User', 'views');
+    }
 }
