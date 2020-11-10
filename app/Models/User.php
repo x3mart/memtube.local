@@ -40,4 +40,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+     * Get User's favorites Videos
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany('App\Models\User', 'favorites');
+    }
+
+    /**
+     * Get Users who downloads this Video
+     */
+    public function downloads()
+    {
+        return $this->belongsToMany('App\Models\User', 'downloads');
+    }
+
+    /**
+     * Who is Admin
+     */
+    public function scoopeAdmins()
+    {
+        return $this->User::where('isAdmin', true);
+    }
 }
