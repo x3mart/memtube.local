@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 use App\Models\Video;
 
 class Main extends Component
 {
-    public $user, $videos, $search, $downloaded, $viewed, $favorite;
+    public $user, $videos, $search, $downloads, $viewed, $favorites;
     public $sort = 'date';
 
     public function mount()
@@ -18,6 +19,12 @@ class Main extends Component
 
     protected function setUser()
     {
+        if(auth()->user()){
+            $this->user = User::find(auth()->user()->id);
+            $this->downloads = $this->user->downloads;
+            $this->viewed = $this->user->viewed;
+            $this->favorites = $this->user->favorites;
+        }
 
     }
 
