@@ -8,6 +8,7 @@ use Livewire\Component;
 class Header extends Component
 {
     public $user;
+    public $isAdmin;
 
     public function mount()
     {
@@ -18,8 +19,13 @@ class Header extends Component
     {
         if(!!auth()->user()){
             $this->user = User::find(auth()->user()->id);
-            $this->user->load('favorites', 'downloads');
+            $this->isAdmin = $this->checkIsAdmin();
         }
+    }
+
+    protected function checkIsAdmin()
+    {
+        return $this->user->isAdmin;
     }
 
     public function render()
