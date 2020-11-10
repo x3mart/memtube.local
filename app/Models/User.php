@@ -51,11 +51,19 @@ class User extends Authenticatable
     }
 
     /**
-     * Get Users who downloads this Video
+     * Get User's downloaded Videos
      */
     public function downloads()
     {
         return $this->belongsToMany('App\Models\Video', 'downloads');
+    }
+
+    /**
+     * Get User's viewed Videos
+     */
+    public function viewed()
+    {
+        return $this->belongsToMany('App\Models\Video', 'views');
     }
 
     /**
