@@ -411,8 +411,7 @@
         <div class='atom'></div>
     </div>
     <a class="navbar-brand" href="{{ url('/') }}">
-        <div class="memtube-logo position-absolute w-100 h-100"
-             style="background-image: url('logo-url');"></div>
+        <div class="memtube-logo></div>
     </a>
 
 </div>
