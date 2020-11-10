@@ -9,7 +9,7 @@
                    aria-label="Search">
         </div>
 
-        <!-- Section: Services -->
+        <!-- Section: Videos -->
         <section id="services" class="mb-5">
 
 
@@ -85,7 +85,7 @@
 
 
         </section>
-        <!-- Section: Services -->
+        <!-- Section: Videos -->
 
 
     </div>
