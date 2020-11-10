@@ -46,7 +46,7 @@ class User extends Authenticatable
      */
     public function favorites()
     {
-        return $this->belongsToMany('App\Models\User', 'favorites');
+        return $this->belongsToMany('App\Models\Video', 'favorites');
     }
 
     /**
@@ -54,7 +54,7 @@ class User extends Authenticatable
      */
     public function downloads()
     {
-        return $this->belongsToMany('App\Models\User', 'downloads');
+        return $this->belongsToMany('App\Models\Video', 'downloads');
     }
 
     /**
