@@ -205,7 +205,7 @@
 <!--/. Sidebar navigation -->
 
 <!-- Intro Section -->
-<div id="home" class="view jarallax atoms-section">
+<div id="home" class="logo-component">
     <div class='organism'>
         <div class='atom'></div>
         <div class='atom'></div>
