@@ -59,7 +59,7 @@
                                 <h5 class="mb-0 text-center">{{ $item->title }}.</h5>
                                 <!-- Text -->
                                 <p class="text-center card-text my-0" style="font-size: 12px;">
-                                    @forelse ($item->tags as $tag)
+                                    @forelse ($item->tags->slice(-3) as $tag)
                                         <a href="#" wire:click.prevent="$set('search', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
                                     @empty
                                         тэгов нет
