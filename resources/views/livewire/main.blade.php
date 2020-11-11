@@ -69,7 +69,7 @@
                                     @endif
                                 </p>
                                 <div style="display: inline-block; text-align: left; color: grey; width: 48%;"><a href="#" style="font-size: 12px; text-align: left; color: grey;">
-                                    <i class="far fa-eye"></i>21</a></div>
+                                <i class="far fa-eye"></i>{{ $item->views }}</a></div>
                                 <div style="display: inline-block; text-align: right; color: grey; width: 48%;">
                                     <a href="#" style="font-size: 12px; text-align: right; color: grey;">
                                         <i class="far fa-star"></i>
@@ -83,15 +83,15 @@
                         </div>
                         <!-- Card Wider -->
                     @empty
-
+                        Таких видео нет
                     @endforelse
                 </div>
-                <div class="text-center">
-                    <button class="btn purple-gradient btn-rounded"><i class="fas fa-arrow-circle-down"></i> Показать еще
-                    </button>
-                </div>
-
-
+                @if ($videosCount - $limit > 0)
+                    <div class="text-center">
+                        <button class="btn purple-gradient btn-rounded" wire:click.prevent="moreVideos"><i class="fas fa-arrow-circle-down"></i> Показать еще
+                        </button>
+                    </div>
+                @endif
             </section>
             <!-- Section: Videos -->
 
