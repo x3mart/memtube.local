@@ -53,7 +53,7 @@
                                     </div>
                                 </form>
 
-                            </div>
+
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
@@ -106,7 +106,7 @@
                                     </button>
                                 </div>
                             </form>
-                        </div>
+
 
                     </div>
                     <!--Footer-->
