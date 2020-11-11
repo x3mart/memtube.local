@@ -2,7 +2,7 @@
     <!-- Main content -->
     <main>
 
-        <div class="container">
+        <div class="container" x-data="{active : @entangle('sort')}">
 
             <div class="active-purple-4 mb-4 card" style="font-size: 2rem; margin-top: -22px;">
                 <input class="form-control form-control-lg" type="text" placeholder="Поиск" id="prefixInside"
@@ -15,11 +15,11 @@
                 <div class="category-menu d-flex">
                     <ul class="mx-auto smooth-scroll">
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light active-category" wire:click.prevent="$set('sort', 'date')" href="#">Новинки <span
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'date'}" wire:click.prevent="$set('sort', 'date')" href="#">Новинки <span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" wire:click.prevent="$set('sort', 'top')" href="#" data-offset="90">Топ</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'top'}" wire:click.prevent="$set('sort', 'top')" href="#" data-offset="90">Топ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link waves-effect waves-light" href="#" data-offset="90">Все</a>
@@ -56,7 +56,7 @@
                             <div class="card-body card-body-cascade px-2 py-1">
 
                                 <!-- Title -->
-                                <h5 class="mb-0 text-center">{{Str::limit( $item->title, 20)}}.</h5>
+                                <h5 class="mb-0 text-center">{{ Str::limit( $item->title, 20) }}.</h5>
                                 <!-- Text -->
                                 <p class="text-center card-text my-0" style="font-size: 12px;">
                                     @forelse ($item->tags->slice(-3) as $tag)
@@ -83,7 +83,9 @@
                         </div>
                         <!-- Card Wider -->
                     @empty
-                        Таких видео нет
+                        <div class="mx-auto">
+                            Таких видео нет
+                        </div>
                     @endforelse
                 </div>
                 @if ($videosCount - $limit > 0)

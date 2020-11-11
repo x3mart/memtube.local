@@ -28,8 +28,9 @@
             @yield('content')
         </main> --}}
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
     <livewire:scripts />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
     <script>
 
