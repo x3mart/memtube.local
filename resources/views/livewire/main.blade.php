@@ -22,7 +22,7 @@
                             <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'top'}" wire:click.prevent="$set('sort', 'top')" href="#" data-offset="90">Топ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" href="#" data-offset="90">Все</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'all'}" wire:click.prevent="$set('sort', 'all')" href="#" data-offset="90">Все</a>
                         </li>
                     </ul>
                 </div>
