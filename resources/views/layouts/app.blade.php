@@ -9,9 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -19,15 +16,35 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <livewire:styles />
+    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet"/>
 </head>
 <body>
     <div id="app">
         <livewire:header />
-        <livewire:main />
-        <main class="py-4">
+        {{ $slot}}
+        {{-- <main class="py-4">
             @yield('content')
-        </main>
+        </main> --}}
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
     <livewire:scripts />
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+    <script>
+
+        new WOW().init();
+
+        $(function () {
+            $("#mdb-lightbox-ui").load("{% static '/mdb-addons/mdb-lightbox-ui.html' %}");
+        });
+
+        $(document).ready(function() {
+            $(".button-collapse").sideNav({
+                edge: 'right'
+            });
+        });
+
+    </script>
 </body>
 </html>
