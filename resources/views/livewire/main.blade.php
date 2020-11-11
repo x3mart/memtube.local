@@ -4,7 +4,7 @@
 
         <div class="container">
 
-            <div class="active-purple-4 mb-4 card" style="font-size: 2rem; margin-top: 200px;">
+            <div class="active-purple-4 mb-4 card" style="font-size: 2rem; margin-top: -22px;">
                 <input class="form-control form-control-lg" type="text" placeholder="Поиск" id="prefixInside"
                        aria-label="Search" wire:model="search">
             </div>

@@ -1,4 +1,4 @@
-<div>
+<div class="logo-section">
     <!--Modal: Login / Register Form-->
     <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog cascading-modal" role="document">
