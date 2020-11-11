@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Main;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', Main::class, '__invoke');
 
 Auth::routes();
 

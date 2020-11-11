@@ -8,17 +8,15 @@ use App\Models\Video;
 
 class Main extends Component
 {
-    public $user, $videos, $search, $downloads, $viewed, $favorites, $order;
-    public $sort = 'date';
-    public $limit =8;
+    public $user, $videos, $downloads, $viewed, $favorites, $order;
+    public $sort = 'top';
+    public $limit = 8;
+    public $search = '';
 
     public function mount()
     {
         session()->flash('viewed_112', true);
         $this->user = $this->setUserData();
-        $this->setOrder();
-        $this->getVideoList();
-
     }
 
     protected function setUserData()
@@ -35,7 +33,10 @@ class Main extends Component
 
     protected function getVideoList()
     {
-        $this->videos = Video::all()->sortByDesc($this->order)->take($this->limit);
+        $this->setOrder();
+        $this->videos = Video::where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
+            $query->where('tag', 'like', $this->search.'%');
+        })->with('tags')->get()->sortByDesc($this->order)->take($this->limit);
     }
 
     protected function setOrder()
@@ -58,6 +59,7 @@ class Main extends Component
 
     public function render()
     {
+        $this->getVideoList();
         return view('livewire.main');
     }
 }
