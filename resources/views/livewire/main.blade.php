@@ -89,7 +89,7 @@
                     @endforelse
                 </div>
                 @if ($videosCount - $limit > 0)
-                    <div class="text-center">
+                    <div class="text-center my-3">
                         <button class="btn purple-gradient btn-rounded" wire:click.prevent="moreVideos"><i class="fas fa-arrow-circle-down"></i> Показать еще
                         </button>
                     </div>
