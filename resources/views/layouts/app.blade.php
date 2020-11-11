@@ -23,6 +23,7 @@
 <body>
     <div id="app">
         <livewire:header />
+        <livewire:main />
         <main class="py-4">
             @yield('content')
         </main>
