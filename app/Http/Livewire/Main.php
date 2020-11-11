@@ -8,8 +8,8 @@ use App\Models\Video;
 
 class Main extends Component
 {
-    public $user, $videos, $downloads, $viewed, $favorites, $order;
-    public $sort = 'top';
+    public $user, $videos, $downloads, $viewed, $favorites, $order, $videosCount;
+    public $sort = 'date';
     public $limit = 8;
     public $search = '';
 
@@ -34,9 +34,11 @@ class Main extends Component
     protected function getVideoList()
     {
         $this->setOrder();
-        $this->videos = Video::where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
+        $allVideos = Video::where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
             $query->where('tag', 'like', $this->search.'%');
-        })->with('tags')->get()->sortByDesc($this->order)->take($this->limit);
+        })->with('tags');
+        $this->videos = $allVideos->get()->sortByDesc($this->order)->take($this->limit);
+        $this->videosCount = $allVideos->count();
     }
 
     protected function setOrder()
@@ -46,15 +48,14 @@ class Main extends Component
                 $this->order = 'created_at';
             break;
             case 'top':
-                $this->order = 'viewed';
+                $this->order = 'views';
             break;
         }
     }
 
     public function moreVideos()
     {
-        $this->limit = $this->limit = 8;
-        $this->videos = $this->getVideoList();
+        $this->limit = $this->limit + 8;
     }
 
     public function render()
