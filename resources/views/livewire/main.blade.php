@@ -56,7 +56,7 @@
                             <div class="card-body card-body-cascade px-2 py-1">
 
                                 <!-- Title -->
-                                <h5 class="mb-0 text-center">{{ $item->title }}.</h5>
+                                <h5 class="mb-0 text-center">Str::limit({{ $item->title }}, 20)</h5>
                                 <!-- Text -->
                                 <p class="text-center card-text my-0" style="font-size: 12px;">
                                     @forelse ($item->tags->slice(-3) as $tag)
@@ -87,7 +87,7 @@
                     @endforelse
                 </div>
                 @if ($videosCount - $limit > 0)
-                    <div class="text-center">
+                    <div class="text-center my-3">
                         <button class="btn purple-gradient btn-rounded" wire:click.prevent="moreVideos"><i class="fas fa-arrow-circle-down"></i> Показать еще
                         </button>
                     </div>
