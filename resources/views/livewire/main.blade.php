@@ -8,7 +8,6 @@
                 <input class="form-control form-control-lg" type="text" placeholder="Поиск" id="prefixInside"
                        aria-label="Search" wire:model="search">
             </div>
-@dump($favorite)
             <!-- Section: Videos -->
             <section id="services" class="mb-5">
                 <div class="category-menu d-flex">

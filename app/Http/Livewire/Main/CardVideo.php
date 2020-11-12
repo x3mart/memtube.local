@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Main;
 
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class CardVideo extends Component
@@ -33,6 +34,11 @@ class CardVideo extends Component
             $this->video->inFavorite()->attach(auth()->user());
             $this->isFavorite = true;
         }
+    }
+
+    public function export()
+    {
+        return Storage::disk('video')->download('lesson1.MP4');
     }
 
     public function render()

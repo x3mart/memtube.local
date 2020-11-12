@@ -28,7 +28,7 @@ class Main extends Component
     {
         if(auth()->user()){
             $this->user = User::find(auth()->user()->id);
-            $this->viewed = $this->user->viewed;
+            // $this->viewed = $this->user->viewed;
             $this->favorite = $this->user->favorites;
             // dd($this->favorite);
         } else {

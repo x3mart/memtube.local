@@ -1,5 +1,4 @@
 <div class="card card-cascade wider col-md-3 my-3">
-    @dump($favorites)
     <!-- Card image -->
     <div class="view view-cascade overlay">
         <video
@@ -43,7 +42,7 @@
             <a href="#" wire:click.prevent="toogleFavorite" style="font-size: 12px; text-align: right; {{ $isFavorite ? 'color: orange;' : 'color: grey;' }}">
                 <i class="far fa-star"></i>
             </a>
-            <a href="#" style="font-size: 12px; text-align: right; color: grey;">
+            <a href="#" wire:click.prevent="export" style="font-size: 12px; text-align: right; color: grey;">
                 <i class="fas fa-cloud-download-alt"></i>
             </a>
         </div>
