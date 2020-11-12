@@ -38,7 +38,9 @@ class CardVideo extends Component
 
     public function export()
     {
-        $this->video->whoDownloads()->attach(auth()->user());
+        if(!$this->video->whoDownloads->contains(auth()->user())){
+            $this->video->whoDownloads()->attach(auth()->user());
+        }
         return Storage::disk('video')->download('lesson1.MP4');
     }
 
