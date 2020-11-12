@@ -2,7 +2,7 @@
     <!-- Main content -->
     <main>
 
-        <div class="container" x-data="{active : @entangle('sort')}">
+        <div class="container" x-data="{sortMode : @entangle('sort'), getMode : @entangle('mode')}">
 
             <div class="active-purple-4 mb-4 card" style="font-size: 2rem; margin-top: -22px;">
                 <input class="form-control form-control-lg" type="text" placeholder="Поиск" id="prefixInside"
@@ -11,19 +11,26 @@
 
             <!-- Section: Videos -->
             <section id="services" class="mb-5">
-
                 <div class="category-menu d-flex">
                     <ul class="mx-auto smooth-scroll">
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'date'}" wire:click.prevent="$set('sort', 'date')" href="#">Новинки <span
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'date'}" wire:click.prevent="$set('sort', 'date')" href="#">Новинки <span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'top'}" wire:click.prevent="$set('sort', 'top')" href="#" data-offset="90">Топ</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'top'}" wire:click.prevent="$set('sort', 'top')" href="#" data-offset="90">Топ</a>
+                        </li>
+                        @auth
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'all'}" wire:click.prevent="$set('mode', 'all')" href="#" data-offset="90">Все</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': active == 'all'}" wire:click.prevent="$set('sort', 'all')" href="#" data-offset="90">Все</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'favorite'}" wire:click.prevent="$set('mode', 'favorite')" href="#" data-offset="90">Любимые</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'download'}" wire:click.prevent="$set('mode', 'download')" href="#" data-offset="90">Загрузки</a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
 
