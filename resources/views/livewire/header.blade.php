@@ -146,24 +146,23 @@
                 <li class="nav-item">
                     <a href="instagram.com" class="nav-link"><i class="fab fa-instagram"></i></a>
                 </li>
+            </ul>
+            <ul>
                 @guest
                     <li class="nav-item">
-                        <a href="" class="btn btn-outline-light btn-rounded waves-effect my-3" data-toggle="modal"
-                           data-target="#modalLRForm">Войти</a>
+                        <a href="" class="nav-link"data-toggle="modal"
+                           data-target="#modalLRForm"><i class="fas fa-user"></i>&ensp;Войти</a>
                     </li>
                 @else
-
                     <li class="nav-item">
-                        @if ($user->isAdmin)
-                            Admin
-                        @else
-                            {{ $user->name }}
-                        @endif
+                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-user"></i>&ensp;
+                            @if ($user->isAdmin)
+                                Admin
+                            @else
+                                {{ $user->name }}
+                            @endif
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
-                    </li>
-
                 @endguest
             </ul>
         </div>
