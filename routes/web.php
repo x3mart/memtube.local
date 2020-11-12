@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\AdminVideoEdit;
 use App\Http\Livewire\Main;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', Main::class, '__invoke');
+Route::get('/admin', AdminVideoEdit::class, '__invoke')->middleware('auth');
 
 Auth::routes();
 
