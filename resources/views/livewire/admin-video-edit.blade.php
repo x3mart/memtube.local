@@ -13,7 +13,7 @@
                             </button>
                         </div>
                         <div class="modal-body mx-3">
-                            <form class="md-form" style="color: #757575;">
+                            <form class="md-form" style="color: #757575;" wire:submit.prevent="saveNewVideo">
                                 <div class="md-form">
                                     <input wire:model.defer="newTitle" type="text" id="form1" class="form-control">
                                     <label for="form1">Название видео</label>
@@ -21,10 +21,10 @@
                                 <div class="file-field">
                                     <div class="btn btn-primary btn-sm float-left">
                                         <span>Выберите файл</span>
-                                        <input type="file">
+                                        <input wire:model="photo"  type="file">
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Загрузить видео">
+                                        <input  class="file-path validate" type="text" placeholder="Загрузить видео">
                                     </div>
                                 </div>
 
