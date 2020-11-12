@@ -30,10 +30,11 @@
 
                             <!--Body-->
                             <div class="modal-body mb-1">
-                                <form>
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-envelope prefix" style="color:#140032;"></i>
-                                        <input type="email" id="modalLRInput10"
+                                        <input name="email" type="email" id="modalLRInput10"
                                                class="form-control form-control-sm validate">
                                         <label data-error="wrong" data-success="right" for="modalLRInput10">Ваш
                                             email</label>
@@ -41,7 +42,7 @@
 
                                     <div class="md-form form-sm mb-4">
                                         <i class="fas fa-lock prefix" style="color:#140032;"></i>
-                                        <input type="password" id="modalLRInput11"
+                                        <input name="password" type="password" id="modalLRInput11"
                                                class="form-control form-control-sm validate">
                                         <label data-error="wrong" data-success="right" for="modalLRInput11">Ваш
                                             пароль</label>
@@ -75,10 +76,11 @@
 
                         <!--Body-->
                         <div class="modal-body">
-                            <form>
+                            <form method="POST">
+                                @csrf
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix" style="color:#140032;"></i>
-                                    <input type="email" id="modalLRInput12"
+                                    <input  wire:model.defer="email" name="email" type="email" id="modalLRInput12"
                                            class="form-control form-control-sm validate">
                                     <label data-error="wrong" data-success="right" for="modalLRInput12">Ваш
                                         email</label>
@@ -86,7 +88,7 @@
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-lock prefix" style="color:#140032;"></i>
-                                    <input type="password" id="modalLRInput13"
+                                    <input wire:model.defer="password" name="password" type="password" id="modalLRInput13"
                                            class="form-control form-control-sm validate">
                                     <label data-error="wrong" data-success="right" for="modalLRInput13">Ваш
                                         пароль</label>
@@ -94,14 +96,14 @@
 
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix" style="color:#140032;"></i>
-                                    <input type="password" id="modalLRInput14"
+                                    <input wire:model.defer="password_confirmation" name="password_confirmation" type="password" id="modalLRInput14"
                                            class="form-control form-control-sm validate">
                                     <label data-error="wrong" data-success="right" for="modalLRInput14">Повторите
                                         пароль</label>
                                 </div>
 
                                 <div class="text-center form-sm mt-2">
-                                    <button type="submit" class="btn purple-gradient btn-rounded"> Регистрация <i
+                                    <button type="submit" class="btn purple-gradient btn-rounded" wire:loading.attr="disabled"  wire:click.prevent="registerUser"> Регистрация <i
                                             class="fas fa-sign-in"></i>
                                     </button>
                                 </div>
@@ -190,12 +192,15 @@
             <li>
                 <ul class="collapsible collapsible-accordion">
                     <li>
-                        <a href="#" class="collapsible-header waves-effect"><i
-                                class="fas fa-star"></i> Избранные</a>
+                        <a href="#" class="collapsible-header waves-effect" wire:click.prevent="$emit('setFavorites')">
+                            <i class="fas fa-star"></i>
+                            Избранные
+                        </a>
                     </li>
                     <li>
-                        <a href="#" class="collapsible-header waves-effect"><i
-                                class="fas fa-download"></i> Скачанные</a>
+                        <a href="#" class="collapsible-header waves-effect" wire:click.prevent="$emit('setToDownloads')"><i class="fas fa-download"></i>
+                            Скачанные
+                        </a>
                     </li>
                     @if ($user->isAdmin)
                         <li>
