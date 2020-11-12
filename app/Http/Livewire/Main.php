@@ -17,7 +17,7 @@ class Main extends Component
     protected $download;
 
 
-    protected $listeners = ['setFavorites' => 'setToFavorites', 'setToDownloads'];
+    protected $listeners = ['setToFavorites', 'setToDownloads'];
 
     public function mount()
     {
@@ -48,22 +48,30 @@ class Main extends Component
         $this->mode = 'all';
     }
 
+    protected function resetLimit()
+    {
+        $this->limit = 8;
+    }
+
     protected function getVideoList()
     {
         $this->setOrder();
         if($this->mode === 'favorite'){
+            $this->resetLimit();
             $allVideos = $this->user->favorites();
         }
         if($this->mode === 'download'){
+            $this->resetLimit();
             $allVideos = $this->user->downloads();;
         }
         if($this->mode === 'all'){
-             $allVideos = Video::where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
-                $query->where('tag', 'like', $this->search.'%');
-            });
+            $this->resetLimit();
+            $allVideos = new  Video;
         }
         // dd($allVideos);
-        $this->videos = $allVideos->with('tags')->get()->sortByDesc($this->order)->take($this->limit);
+        $this->videos = $allVideos->where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
+            $query->where('tag', 'like', $this->search.'%');
+        })->with('tags')->get()->sortByDesc($this->order)->take($this->limit);
         $this->videosCount = $allVideos->count();
     }
 
@@ -87,6 +95,7 @@ class Main extends Component
     public function render()
     {
         $this->getVideoList();
+        
         return view('livewire.main');
     }
 }
