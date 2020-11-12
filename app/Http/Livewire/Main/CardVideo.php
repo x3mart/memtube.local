@@ -17,8 +17,12 @@ class CardVideo extends Component
         $this->isFavorite = $this->checkIsFavorite();
     }
 
+
     protected function checkIsFavorite()
     {
+        if(!auth()->user()){
+            return false;
+        }
         return $this->favorites->contains($this->video);
     }
 

@@ -10,6 +10,7 @@ use Livewire\Component;
 class Header extends Component
 {
     public $user;
+    public $name;
     public $isAdmin;
     public $email, $password, $password_confirmation;
 
@@ -32,7 +33,7 @@ class Header extends Component
     }
 
     public function registerUser(){
-        $this->user = User::create(['email' => $this->email, 'password' => Hash::make($this->password), 'name' => 'Bot']);
+        $this->user = User::create(['email' => $this->email, 'password' => Hash::make($this->password), 'name' => $this->name]);
         Auth::guard('web')->login($this->user);
         return redirect()->to('/');
     }

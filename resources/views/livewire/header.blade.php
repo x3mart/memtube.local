@@ -71,11 +71,11 @@
                         <div class="tab-pane fade" id="panel8" role="tabpanel">
                             <!--Body-->
                             <div class="modal-body">
-                                <form method="POST">
+                                <form>
                                     @csrf
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-user prefix" style="color:#140032;"></i>
-                                        <input wire:model.defer="name" type="text" id="modalLRInput15"
+                                        <input wire:model.defer="name" name="name" type="text" id="modalLRInput15"
                                                class="form-control form-control-sm validate">
                                         <label data-error="wrong" data-success="right" for="modalLRInput15">Ваше
                                             имя</label>
