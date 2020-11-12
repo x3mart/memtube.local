@@ -29,16 +29,17 @@
 
                             <!--Body-->
                             <div class="modal-body mb-1">
-                            <form>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix" style="color:#140032;"></i>
-                                    <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
+                                    <input type="email" name="email" id="modalLRInput10" class="form-control form-control-sm validate">
                                     <label data-error="wrong" data-success="right" for="modalLRInput10">Ваш email</label>
                                 </div>
 
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix" style="color:#140032;"></i>
-                                    <input type="password" id="modalLRInput11"
+                                    <input type="password" id="modalLRInput11" name="password"
                                            class="form-control form-control-sm validate">
                                     <label data-error="wrong" data-success="right" for="modalLRInput11">Ваш пароль</label>
                                 </div>
@@ -46,7 +47,7 @@
                                 <button type="submit" class="btn purple-gradient btn-rounded"> Войти <i class="fas fa-sign-in ml-1"></i>
                         </button>
                         </form>
-                                   
+
                                 </div>
                             </div>
                             <!--Footer-->
