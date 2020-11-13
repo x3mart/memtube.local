@@ -8,36 +8,78 @@ use App\Models\Video;
 
 class Main extends Component
 {
-    public $user, $videos, $downloads, $viewed, $favorites, $order, $videosCount;
+    public $user, $videos, $viewed, $order, $videosCount;
     public $sort = 'date';
     public $limit = 8;
     public $search = '';
+    public $mode = 'all';
+    public $favorite;
+    public $download;
+
+
+    protected $listeners = ['setToFavorites', 'setToDownloads', 'favoriteCanceled'];
 
     public function mount()
     {
-        session()->flash('viewed_112', true);
-        $this->user = $this->setUserData();
+        $this->setUserData();
     }
 
-    protected function setUserData()
+    public function setUserData()
     {
         if(auth()->user()){
             $this->user = User::find(auth()->user()->id);
-            $this->downloads = $this->user->downloads;
-            $this->viewed = $this->user->viewed;
-            $this->favorites = $this->user->favorites;
+            // $this->viewed = $this->user->viewed;
+            $this->favorite = $this->user->favorites;
+            // dd($this->favorite);
         } else {
-            $this->viewed = session('viewed_112');
+            // $this->viewed = session('viewed_112');
         }
+    }
+
+    public function favoriteCanceled()
+    {
+        $this->setUserData();
+    }
+
+    public function setToFavorites(){
+        $this->setUserData();
+        $this->resetLimit();
+        $this->mode = 'favorite';
+    }
+
+    public function setToDownloads(){
+        $this->setUserData();
+        $this->resetLimit();
+        $this->mode = 'download';
+    }
+
+    public function setToAll(){
+        $this->setUserData();
+        $this->resetLimit();
+        $this->mode = 'all';
+    }
+
+    protected function resetLimit()
+    {
+        $this->limit = 8;
     }
 
     protected function getVideoList()
     {
         $this->setOrder();
-        $allVideos = Video::where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
+        if($this->mode === 'favorite'){
+            $allVideos = $this->user->favorites();
+        }
+        if($this->mode === 'download'){
+            $allVideos = $this->user->downloads();
+        }
+        if($this->mode === 'all'){
+            $allVideos = new  Video;
+        }
+        // dd($allVideos);
+        $this->videos = $allVideos->where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
             $query->where('tag', 'like', $this->search.'%');
-        })->with('tags');
-        $this->videos = $allVideos->get()->sortByDesc($this->order)->take($this->limit);
+        })->with('tags')->take($this->limit)->get()->sortByDesc($this->order);
         $this->videosCount = $allVideos->count();
     }
 
@@ -61,6 +103,7 @@ class Main extends Component
     public function render()
     {
         $this->getVideoList();
+
         return view('livewire.main');
     }
 }
