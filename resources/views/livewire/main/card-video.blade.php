@@ -28,7 +28,7 @@
         <!-- Text -->
         <p class="text-center card-text my-0" style="font-size: 12px;">
             @forelse ($video->tags->slice(-3) as $tag)
-                <a href="#" wire:click.prevent="$set('search', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
+                <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
             @empty
                 тэгов нет
             @endforelse

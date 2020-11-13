@@ -17,7 +17,7 @@ class Main extends Component
     public $download;
 
 
-    protected $listeners = ['setToFavorites', 'setToDownloads', 'favoriteCanceled'];
+    protected $listeners = ['setToFavorites', 'setToDownloads', 'favoriteCanceled', 'setSearch'];
 
     public function mount()
     {
@@ -98,6 +98,11 @@ class Main extends Component
     public function moreVideos()
     {
         $this->limit = $this->limit + 8;
+    }
+
+    public function setSearch($tag)
+    {
+        $this->search = $tag;
     }
 
     public function render()
