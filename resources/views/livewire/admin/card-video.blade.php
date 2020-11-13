@@ -14,7 +14,7 @@
                 height="170"
                 data-setup="{}"
             >
-                <source src="video_src" type="video/mp4"/>
+        <source src="{{ asset($video->path) }}" type="video/mp4"/>
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
                     web browser that
@@ -44,7 +44,11 @@
             @empty
                 Тэгов нет!
             @endforelse
-            <a href="#" class="text-success ml-3"><i class="fas fa-plus-square"></i> Добавить тэги!</a>
+            @if (!!$addTags)
+                <input wire:model.defer="tags" type="text" id="form1" class="form-control mb-2 "> <a href="#" wire:click.prevent="addTags" class="text-success"><i class="fas fa-check-double"></i> Добавить</a>
+            @else
+                <a href="#" wire:click.prevent="$set('addTags', true)" class="text-success ml-3"><i class="fas fa-plus-square"></i> Добавить тэги!</a>
+            @endif
         </p>
         <!-- Read more button -->
         {{-- <a class="btn btn-primary btn-md mx-0 btn-rounded">Редактировать</a> --}}
