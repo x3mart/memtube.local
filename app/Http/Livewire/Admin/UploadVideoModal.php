@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Tag;
 use App\Models\Video;
 use Livewire\WithFileUploads;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use Livewire\Component;

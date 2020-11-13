@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class CardVideo extends Component
 {
-    public $video, $tag, $title, $titleEdit;
+    public $video, $tag, $title, $titleEdit, $tags, $addTags;
 
     public function editTitle()
     {
@@ -27,6 +29,23 @@ class CardVideo extends Component
     {
         $this->video->tags()->detach($tag);
         $this->video->load('tags');
+    }
+
+    public function addTags()
+    {
+        $tagsNames = Str::of($this->tags)->explode(' ');
+        foreach ($tagsNames as $item){
+            if($item != '' && !$this->video->tags()->where('tag', $item)->first()){
+                if(!Tag::where('tag', $item)->first()){
+                    $tag = Tag::create(['tag' => $item]);
+                } else {
+                     $tag = Tag::where('tag', $item)->first();
+                }
+                $this->video->tags()->attach($tag);
+            }
+        }
+        $this->video->load('tags');
+        $this->addTags = false;
     }
 
     public function deleteVideo()
