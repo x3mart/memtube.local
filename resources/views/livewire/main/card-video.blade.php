@@ -1,6 +1,6 @@
 <div class="card card-cascade wider col-md-3 my-3">
     <!-- Card image -->
-    <div class="view view-cascade overlay">
+    <div class="view view-cascade overlay" wire:ignore>
         <video
                 id="my-video"
                 class="video-js"
@@ -10,7 +10,7 @@
                 height="170"
                 data-setup="{}"
         >
-            <source src="video_src" type="video/mp4"/>
+            <source src="{{ asset($video->path) }}" type="video/mp4"/>
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a
                 web browser that
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Card content -->
-    <div class="card-body card-body-cascade px-2 py-1">
+    <div class="card-body card-body-cascade px-2 py-1" >
 
         <!-- Title -->
         <h5 class="mb-0 text-center">{{ Str::limit( $video->title, 20) }}.</h5>

@@ -45,7 +45,7 @@ class CardVideo extends Component
         if(!$this->video->whoDownloads->contains(auth()->user())){
             $this->video->whoDownloads()->attach(auth()->user());
         }
-        return Storage::disk('video')->download('lesson1.MP4');
+        return Storage::disk('local')->download($this->video->path);
     }
 
     public function render()
