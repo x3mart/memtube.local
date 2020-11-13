@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Video;
+use Illuminate\Support\Str;
 
 class Main extends Component
 {
@@ -76,9 +77,9 @@ class Main extends Component
         if($this->mode === 'all'){
             $allVideos = new  Video;
         }
-        // dd($allVideos);
-        $this->videos = $allVideos->where('title', 'like','%'.$this->search.'%')->orWhereHas('tags', function($query){
-            $query->where('tag', 'like', $this->search.'%');
+        $tags = Str::of($this->search)->explode(' ');
+        $this->videos = $allVideos->where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
+            $query->whereIn('tag', $tags);
         })->with('tags')->take($this->limit)->get()->sortByDesc($this->order);
         $this->videosCount = $allVideos->count();
     }

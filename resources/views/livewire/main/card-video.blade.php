@@ -24,7 +24,7 @@
     <div class="card-body card-body-cascade px-2 py-1" >
 
         <!-- Title -->
-        <h5 class="mb-0 text-center">{{ Str::limit( $video->title, 20) }}.</h5>
+        <h5 class="mb-0 text-center">{{ Str::ucfirst(Str::limit( $video->title, 20)) }}.</h5>
         <!-- Text -->
         <p class="text-center card-text my-0" style="font-size: 12px;">
             @forelse ($video->tags->slice(-3) as $tag)

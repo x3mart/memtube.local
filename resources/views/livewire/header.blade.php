@@ -173,7 +173,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                                 @if ($user->isAdmin)
-                                    <a href="#" class="collapsible-header waves-effect"><i
+                                    <a href="/admin" class="collapsible-header waves-effect"><i
                                             class="fas fa-film"></i> Управление видео</a>
                                 @endif
                                     <a href="#" class="collapsible-header waves-effect"><i
