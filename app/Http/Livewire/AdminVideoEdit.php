@@ -4,20 +4,16 @@ namespace App\Http\Livewire;
 
 use App\Models\Video;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class AdminVideoEdit extends Component
 {
-    use WithFileUploads;
+    public $videos, $tags;
 
-    public $videos, $title, $tags, $photo;
-
-    protected $listeners = ['videoDeleted'];
+    protected $listeners = ['videoDeleted', 'videoCreated'];
 
     public function mount()
     {
         $this->checkIsAdmin();
-        $this->getVideos();
     }
 
     protected function checkIsAdmin()
@@ -35,17 +31,17 @@ class AdminVideoEdit extends Component
 
     public function videoDeleted()
     {
-        $this->videos = $this->getVideos();
+
     }
 
-    public function saveNewVideo()
+    public function videoCreated()
     {
-        // dd($this->video);
-        $this->photo->store('photos');
+        
     }
 
     public function render()
     {
+        $this->getVideos();
         return view('livewire.admin-video-edit');
     }
 }

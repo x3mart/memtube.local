@@ -26,6 +26,7 @@ class CardVideo extends Component
     public function deleteTag($tag)
     {
         $this->video->tags()->detach($tag);
+        $this->video->load('tags');
     }
 
     public function deleteVideo()
