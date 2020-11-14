@@ -1,4 +1,4 @@
-<div class="logo-section" x-data="{ login : true, open : false}">
+<div class="logo-section" x-data="{ login : true, open : false, change_password : false}">
     <!--Modal: Login / Register Form-->
     <div style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="open">
         <div class="modal-dialog cascading-modal" role="document">
@@ -142,7 +142,38 @@
         </div>
     </div>
     <!--Modal: Login / Register Form-->
-
+    {{-- modal change password --}}
+    <div class="modal-dialog cascading-modal" role="document" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="change_password">
+        <div class="modal-content">
+            <!--Modal cascading tabs-->
+            <div class="modal-c-tabs">
+                <div class="tab-pane fade in active show">
+                    <!--Body-->
+                    <div class="modal-body mb-1">
+                        <form>
+                            <div class="md-form form-sm mb-5">
+                                <i class="fas fa-lock prefix" style="color:#140032;"></i>
+                                <input wire:model="new_password" id="modalLRInput194" name="password" type="password" class="form-control form-control-sm">
+                                <label wire:ignore for="modalLRInput194">Новый пароль</label>
+                                    @error('new_password') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="md-form form-sm mb-4">
+                                <i class="fas fa-lock prefix" style="color:#140032;"></i>
+                                <input wire:model="password_confirmation" name="password_confirmation" id="modalLRInput193" type="password" class="form-control form-control-sm">
+                                <label wire:ignore for="modalLRInput193">Повторите пароль</label>
+                                    @error('password_confirmation') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="text-center mt-2">
+                                <button wire:loading.attr="disabled" wire:click.prevent="changePassword" type="submit" class="btn purple-gradient btn-rounded"> Изменить <i
+                                        class="fas fa-sign-in ml-1"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
         <div class="container">
@@ -182,8 +213,8 @@
                                     <a href="{{ route('admin') }}" class="collapsible-header waves-effect"><i
                                             class="fas fa-film"></i> Управление видео</a>
                                 @endif
-{{--                                    <a href="#" class="collapsible-header waves-effect"><i--}}
-{{--                                            class="fas fa-lock"></i> Сменить пароль</a>--}}
+                                   <a href="" @click.prevent="change_password=true"class="collapsible-header waves-effect"><i
+                                           class="fas fa-lock"></i> Сменить пароль</a>
                                     <a href="{{ route('logout') }}" class="collapsible-header waves-effect"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                             class="fas fa-sign-out-alt"></i> Выход</a>

@@ -48,7 +48,7 @@ class Header extends Component
 
     public function registerUser(){
 
-        $validatedData = $this->validate([
+        $this->validate([
             'name' => 'required|min:3',
             'new_email' => 'required|email|unique:users,email',
             'new_password' => 'required|min:6',
@@ -56,6 +56,16 @@ class Header extends Component
         ]);
         $this->user = User::create(['email' => $this->new_email, 'password' => Hash::make($this->new_password), 'name' => $this->name]);
         Auth::guard('web')->login($this->user);
+        return redirect()->to('/');
+    }
+
+    public function changePassword()
+    {
+        $this->validate([
+            'new_password' => 'required|min:6',
+            'password_confirmation' => 'same:new_password'
+        ]);
+        $this->user->update(['password' => Hash::make($this->new_password)]);
         return redirect()->to('/');
     }
 
