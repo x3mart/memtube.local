@@ -5,7 +5,7 @@
             id="my-video-{{ $video->id }}"
             class="video-js"
             controls
-            preload="auto"
+            preload="metadata"
             width="255"
             height="170"
             data-setup="{}"
@@ -19,7 +19,13 @@
             </p>
         </video>
     </div>
+    <script>
+        var player = videojs('my-video-{{ $video->id }}');
 
+        player.on('playing', function() {
+            @this.increment()
+        });
+    </script>
     <!-- Card content -->
     <div class="card-body card-body-cascade px-2 py-1">
         <!-- Title -->

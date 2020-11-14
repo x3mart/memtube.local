@@ -48,6 +48,12 @@ class CardVideo extends Component
         return Storage::disk('local')->download($this->video->path);
     }
 
+    public function increment()
+    {
+        $this->video->views = $this->video->views = 1;
+        $this->video->save();
+    }
+
     public function render()
     {
         return view('livewire.main.card-video');
