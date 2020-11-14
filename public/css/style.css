@@ -28,16 +28,6 @@
     padding-left: 2.15rem
 }
 
-.construction-lp .navbar {
-    background-color: #23242a;
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
-}
-
-.construction-lp .navbar:not(.top-nav-collapse) {
-    background: 0 0
-}
-
 @media (min-width: 769px) {
     .construction-lp .navbar:not(.top-nav-collapse) {
         -webkit-box-shadow: none;
