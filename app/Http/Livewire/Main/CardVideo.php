@@ -50,7 +50,7 @@ class CardVideo extends Component
 
     public function increment()
     {
-        $this->video->views = $this->video->views = 1;
+        $this->video->views = $this->video->views + 1;
         $this->video->save();
     }
 
