@@ -27,7 +27,7 @@
             @if(Str::length($video->title) > 20)
                 <div data-toggle="tooltip" title="{{ $video->title }}">{{ Str::ucfirst(Str::limit( $video->title, 20)) }}</div>
             @else
-                {{ $video->title }}
+                {{ Str::ucfirst($video->title) }}
             @endif
         </h5>
         <!-- Text -->
