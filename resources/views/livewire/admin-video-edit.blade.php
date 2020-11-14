@@ -23,6 +23,7 @@
                 @empty
 
                 @endforelse
+                {{ $videos->links() }}
             </div>
 
         </section>
