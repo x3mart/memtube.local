@@ -2,7 +2,7 @@
     <!-- Card image -->
     <div class="view view-cascade overlay" wire:ignore>
         <video
-            id="my-video"
+            id="my-video-{{ $video->id }}"
             class="video-js"
             controls
             preload="auto"
