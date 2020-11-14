@@ -33,7 +33,7 @@
                                         <i class="fas fa-envelope prefix" style="color:#140032;"></i>
                                         <input name="email" type="email" id="modalLRInput10"
                                                class="form-control form-control-sm validate">
-                                        <label data-error="wrong" data-success="right" for="modalLRInput10">Ваш
+                                        <label data-error="Введите правильный email" data-success="Отлично" for="modalLRInput10">Ваш
                                             email</label>
                                     </div>
 
@@ -41,7 +41,7 @@
                                         <i class="fas fa-lock prefix" style="color:#140032;"></i>
                                         <input name="password" type="password" id="modalLRInput11"
                                                class="form-control form-control-sm validate">
-                                        <label data-error="wrong" data-success="right" for="modalLRInput11">Ваш
+                                        <label data-error="Ошибка" data-success="Отлично" for="modalLRInput11">Ваш
                                             пароль</label>
                                     </div>
                                     <div class="text-center mt-2">
@@ -77,14 +77,14 @@
                                         <i class="fas fa-user prefix" style="color:#140032;"></i>
                                         <input wire:model.defer="name" name="name" type="text" id="modalLRInput15"
                                                class="form-control form-control-sm validate">
-                                        <label data-error="wrong" data-success="right" for="modalLRInput15">Ваше
+                                        <label  data-error="Ошибка" data-success="Отлично" for="modalLRInput15">Ваше
                                             имя</label>
                                     </div>
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-envelope prefix" style="color:#140032;"></i>
                                         <input wire:model.defer="email" name="email" type="email" id="modalLRInput12"
                                                class="form-control form-control-sm validate">
-                                        <label data-error="wrong" data-success="right" for="modalLRInput12">Ваш
+                                        <label data-error="Ошибка" data-success="Отлично" for="modalLRInput12">Ваш
                                             email</label>
                                     </div>
 
@@ -93,7 +93,7 @@
                                         <input wire:model.defer="password" name="password" type="password"
                                                id="modalLRInput13"
                                                class="form-control form-control-sm validate">
-                                        <label data-error="wrong" data-success="right" for="modalLRInput13">Ваш
+                                        <label data-error="Ошибка" data-success="Отлично" for="modalLRInput13">Ваш
                                             пароль</label>
                                     </div>
 
@@ -102,7 +102,7 @@
                                         <input wire:model.defer="password_confirmation" name="password_confirmation"
                                                type="password" id="modalLRInput14"
                                                class="form-control form-control-sm validate">
-                                        <label data-error="wrong" data-success="right" for="modalLRInput14">Повторите
+                                        <label data-error="Ошибка" data-success="Отлично" for="modalLRInput14">Повторите
                                             пароль</label>
                                     </div>
 
@@ -153,7 +153,7 @@
                         <a href="instagram.com" class="nav-link"><i class="fab fa-instagram"></i></a>
                     </li>
                 </ul>
-                <ul>
+                <ul class="navbar-nav ml-5">
                     @guest
                         <li class="nav-item">
                             <a href="" class="nav-link" data-toggle="modal"
@@ -173,11 +173,11 @@
                             </a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                                 @if ($user->isAdmin)
-                                    <a href="/admin" class="collapsible-header waves-effect"><i
+                                    <a href="{{ route('admin') }}" class="collapsible-header waves-effect"><i
                                             class="fas fa-film"></i> Управление видео</a>
                                 @endif
-                                    <a href="#" class="collapsible-header waves-effect"><i
-                                            class="fas fa-lock"></i> Сменить пароль</a>
+{{--                                    <a href="#" class="collapsible-header waves-effect"><i--}}
+{{--                                            class="fas fa-lock"></i> Сменить пароль</a>--}}
                                     <a href="{{ route('logout') }}" class="collapsible-header waves-effect"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                             class="fas fa-sign-out-alt"></i> Выход</a>
@@ -191,61 +191,6 @@
             </div>
         </div>
     </nav>
-
-{{--@auth--}}
-{{--    <!-- Sidebar navigation -->--}}
-{{--        <div id="slide-out" class="side-nav">--}}
-{{--            <ul class="custom-scrollbar">--}}
-{{--                <!-- Greeting -->--}}
-{{--                <li>--}}
-{{--                    <div class="sidebar-greeting"--}}
-{{--                         style="padding:20px;border-bottom:1px solid rgba(153, 153, 153, 0.3);">--}}
-{{--                        Добро--}}
-{{--                        пожаловать, <br>--}}
-{{--                        @if ($user->isAdmin)--}}
-{{--                            Admin--}}
-{{--                        @else--}}
-{{--                            {{ $user->name }}--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
-{{--                </li>--}}
-{{--                <!--/. Greeting -->--}}
-{{--                <!-- Side navigation links -->--}}
-{{--                <li>--}}
-{{--                    <ul class="collapsible collapsible-accordion">--}}
-{{--                        <li>--}}
-{{--                            <a href="#" class="collapsible-header waves-effect"--}}
-{{--                               wire:click.prevent="$emit('setFavorites')">--}}
-{{--                                <i class="fas fa-star"></i>--}}
-{{--                                Избранные--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="#" class="collapsible-header waves-effect"--}}
-{{--                               wire:click.prevent="$emit('setToDownloads')"><i class="fas fa-download"></i>--}}
-{{--                                Скачанные--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        @if ($user->isAdmin)--}}
-{{--                            <li>--}}
-{{--                                <a href="#" class="collapsible-header waves-effect"><i--}}
-{{--                                        class="fas fa-film"></i> Управление видео</a>--}}
-{{--                            </li>--}}
-{{--                        @endif--}}
-{{--                        <li>--}}
-{{--                            --}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            --}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-{{--                <!--/. Side navigation links -->--}}
-{{--            </ul>--}}
-{{--            <div class="sidenav-bg mask-strong"></div>--}}
-{{--        </div>--}}
-{{--        <!--/. Sidebar navigation -->--}}
-{{--@endauth--}}
 
 <!-- Intro Section -->
     <div id="home" class="logo-component">
