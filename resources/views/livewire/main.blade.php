@@ -39,7 +39,7 @@
                         <!-- Card Wider -->
                     @empty
                         <div class="mx-auto">
-                            Таких видео нет
+                            Пусто
                         </div>
                     @endforelse
                 </div>

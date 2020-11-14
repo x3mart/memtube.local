@@ -26,7 +26,7 @@
                                 @error('video') <span class="error">{{ $message }}</span> @enderror
                                 <div class="md-form">
                                     <textarea wire:model.defer="tags" id="form7" class="md-textarea form-control" rows="3"></textarea>
-                                    <label wire:ignore for="form7">Теги (через пробел без #)</label>
+                                    <label wire:ignore for="form7">Теги (через пробел, без #)</label>
                                 </div>
 
                                 <button wire:loading.attr="disabled" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect"

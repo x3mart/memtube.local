@@ -34,10 +34,10 @@
         @if (!!$titleEdit)
             <input wire:model.defer="title" type="text" id="form1" class="form-control mb-2 "> <a href="#" wire:click.prevent="saveTitle" class="text-success"><i class="fas fa-check-double"></i> Сохранить</a>
         @else
-            <h4 class="font-weight-bold mb-0"><strong>{{ $video->title }} <a href="#" wire:click.prevent="editTitle" class="text-primary font-weight-normal ml-3"><i class="fas fa-edit"></i> Изменить название</a></strong></h4>
+            <h4 class="font-weight-bold mb-0"><strong>{{ Str::ucfirst($video->title) }} <a href="#" wire:click.prevent="editTitle" class="text-primary font-weight-normal ml-3"><i class="fas fa-edit"></i> Изменить название</a></strong></h4>
         @endif
         <!-- Excerpt -->
-        <p class="black-text mb-0">Теги:</p>
+        <p class="black-text mb-0">Тэги:</p>
         <p class="dark-grey-text">
             @forelse ($video->tags as $tag)
                 #{{ $tag->tag }}<a href="#" wire:click.prevent="deleteTag({{$tag->id}})" class="text-danger"><i class="fas fa-trash"></i></a>&nbsp;

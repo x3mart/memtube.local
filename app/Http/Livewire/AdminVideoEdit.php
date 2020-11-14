@@ -4,10 +4,15 @@ namespace App\Http\Livewire;
 
 use App\Models\Video;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AdminVideoEdit extends Component
 {
-    public $videos, $tags;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
+    public $tags;
 
     protected $listeners = ['videoDeleted', 'videoCreated'];
 
@@ -24,10 +29,10 @@ class AdminVideoEdit extends Component
         return redirect()->to('/');
     }
 
-    protected function getVideos()
-    {
-        $this->videos = Video::with('tags')->get();
-    }
+    // protected function getVideos()
+    // {
+    //     $this->videos =
+    // }
 
     public function videoDeleted()
     {
@@ -36,12 +41,14 @@ class AdminVideoEdit extends Component
 
     public function videoCreated()
     {
-        
+
     }
 
     public function render()
     {
-        $this->getVideos();
-        return view('livewire.admin-video-edit');
+        return view('livewire.admin-video-edit',
+        ['videos' => Video::with('tags')
+                    ->orderBy('created_at','DESC')
+                    ->paginate(8)]);
     }
 }
