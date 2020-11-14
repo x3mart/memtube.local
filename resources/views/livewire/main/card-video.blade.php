@@ -22,11 +22,10 @@
 
     <!-- Card content -->
     <div class="card-body card-body-cascade px-2 py-1">
-
         <!-- Title -->
         <h5 class="mb-0 text-center">
             @if(Str::length($video->title) > 20)
-                <a href="#" data-toggle="tooltip" title="{{ $video->title }}">{{ Str::ucfirst(Str::limit( $video->title, 20)) }}</a>
+                <div data-toggle="tooltip" title="{{ $video->title }}">{{ Str::ucfirst(Str::limit( $video->title, 20)) }}</div>
             @else
                 {{ $video->title }}
             @endif
@@ -38,37 +37,31 @@
             @empty
                 тэгов нет
             @endforelse
+            <!--Menu-->
             @if ($video->tags->count() > 3)
-                <a id="dropdownMTags" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">еще {{ $video->tags->count() - 3 }}</a>
-
+                <a id="dropdownMTags" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    еще {{ $video->tags->count() - 3 }}
+                </a>
                 <div class="dropdown-menu dropdown-primary" style="max-width:300px;white-space: normal;">
-
-                    @forelse ($video->tags as $tag)
+                    @foreach ($video->tags as $tag)
                         <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
-                    @endforelse
-
+                    @endforeach
                 </div>
-
-
-                <!--Menu-->
-
+            @endif
+        </p>
+        <div style="display: inline-block; text-align: left; color: grey; width: 48%;">
+            <a href="#" style="font-size: 12px; text-align: left; color: grey;">
+                <i class="far fa-eye"></i>{{ $video->views }}
+            </a>
+        </div>
+        <div style="display: inline-block; text-align: right; color: grey; width: 48%;">
+            <a href="#" wire:click.prevent="toogleFavorite"
+            style="font-size: 12px; text-align: right; {{ $isFavorite ? 'color: orange;' : 'color: grey;' }}">
+                <i class="far fa-star"></i>
+            </a>
+            <a href="#" wire:click.prevent="export" style="font-size: 12px; text-align: right; color: grey;">
+                <i class="fas fa-cloud-download-alt"></i>
+            </a>
+        </div>
     </div>
-
-
-    @endif
-    </p>
-    <div style="display: inline-block; text-align: left; color: grey; width: 48%;"><a href="#"
-                                                                                      style="font-size: 12px; text-align: left; color: grey;">
-            <i class="far fa-eye"></i>{{ $video->views }}</a></div>
-    <div style="display: inline-block; text-align: right; color: grey; width: 48%;">
-        <a href="#" wire:click.prevent="toogleFavorite"
-           style="font-size: 12px; text-align: right; {{ $isFavorite ? 'color: orange;' : 'color: grey;' }}">
-            <i class="far fa-star"></i>
-        </a>
-        <a href="#" wire:click.prevent="export" style="font-size: 12px; text-align: right; color: grey;">
-            <i class="fas fa-cloud-download-alt"></i>
-        </a>
-    </div>
-</div>
 </div>
