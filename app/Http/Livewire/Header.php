@@ -12,11 +12,25 @@ class Header extends Component
     public $user;
     public $name;
     public $isAdmin;
-    public $email, $password, $password_confirmation;
+    public $email, $password, $password_confirmation, $new_password, $new_email;
 
     public function mount()
     {
         $this->setUser();
+    }
+
+    protected $rules = [
+        'name' => 'min:3',
+        'email' => 'email',
+        'password' => 'min:6',
+        'new_email' => 'email|unique:users,email',
+        'new_password' => 'min:6',
+        'password_confirmation' => 'same:new_password'
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
     protected function setUser()
@@ -33,8 +47,25 @@ class Header extends Component
     }
 
     public function registerUser(){
-        $this->user = User::create(['email' => $this->email, 'password' => Hash::make($this->password), 'name' => $this->name]);
+
+        $this->validate([
+            'name' => 'required|min:3',
+            'new_email' => 'required|email|unique:users,email',
+            'new_password' => 'required|min:6',
+            'password_confirmation' => 'same:new_password'
+        ]);
+        $this->user = User::create(['email' => $this->new_email, 'password' => Hash::make($this->new_password), 'name' => $this->name]);
         Auth::guard('web')->login($this->user);
+        return redirect()->to('/');
+    }
+
+    public function changePassword()
+    {
+        $this->validate([
+            'new_password' => 'required|min:6',
+            'password_confirmation' => 'same:new_password'
+        ]);
+        $this->user->update(['password' => Hash::make($this->new_password)]);
         return redirect()->to('/');
     }
 

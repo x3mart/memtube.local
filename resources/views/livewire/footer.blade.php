@@ -1,4 +1,3 @@
-<!-- Footer -->
 <footer class="page-footer footer-tiles text-center text-md-left">
     <div class="footer-copyright py-3 text-center wow fadeIn" data-wow-delay="0.3s">
         <div class="container-fluid">
@@ -7,4 +6,3 @@
         </div>
     </div>
 </footer>
-<!-- Footer -->
