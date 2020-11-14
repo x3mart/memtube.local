@@ -29,6 +29,7 @@
         {{-- <main class="py-4">
             @yield('content')
         </main> --}}
+        <livewire:footer />
     </div>
     <livewire:scripts />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ==" crossorigin="anonymous"></script>
