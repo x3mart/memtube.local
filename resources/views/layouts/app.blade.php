@@ -32,10 +32,7 @@
 <body>
     <div id="app">
         <livewire:header />
-        {{ $slot}}
-        {{-- <main class="py-4">
-            @yield('content')
-        </main> --}}
+        {{ $slot }}
         <livewire:footer />
     </div>
     <livewire:scripts />

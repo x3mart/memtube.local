@@ -19,6 +19,19 @@ class Header extends Component
         $this->setUser();
     }
 
+    protected $messages = [
+        'email.required' => 'Обязательное поле.',
+        'email.email' => 'Email в формате email@domain.com',
+        'new_email.required' => 'Обязательное поле.',
+        'new_email.email' => 'Email в формате email@domain.com',
+        'new_email.unique' => 'Эта почта уже зарегистрированна',
+        'password.min' => 'Пароль минимум 6 символов',
+        'password.required' => 'Обязательное поле.',
+        'new_password.min' => 'Пароль минимум 6 символов',
+        'new_password.required' => 'Обязательное поле.',
+        'password_confirmatio.same' => 'Пароли долны совпадать',
+    ];
+
     protected $rules = [
         'name' => 'min:3',
         'email' => 'email',
