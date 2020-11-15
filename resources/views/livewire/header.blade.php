@@ -143,8 +143,14 @@
     </div>
     <!--Modal: Login / Register Form-->
     {{-- modal change password --}}
-    <div class="modal-dialog cascading-modal" role="document" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="change_password" @click.away="change_password = false">
+    <div class="modal-dialog" role="document" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="change_password" @click.away="change_password = false">
         <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Новый пароль</h4>
+                <button type="button" @click.pevent="change_password = false" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <!--Modal cascading tabs-->
             <div class="modal-c-tabs">
                 <div class="tab-pane fade in active show">
