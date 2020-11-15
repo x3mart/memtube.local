@@ -47,7 +47,7 @@
                                         @error('password') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="text-center mt-2">
-                                        <button wire:loading.attr="disabled" type="submit" class="btn purple-gradient btn-rounded"> Войти <i
+                                        <button wire:loading.attr="disabled" wire:click.prevent="authUser" type="button" class="btn purple-gradient btn-rounded"> Войти <i
                                                 class="fas fa-sign-in ml-1"></i>
                                         </button>
                                     </div>

@@ -56,6 +56,16 @@ class Header extends Component
         }
     }
 
+    public function authUser()
+    {
+        $this->user = User::where('email', $this->email)->first();
+        if (Hash::check($this->password, $this->user->password)) {
+            Auth::guard('web')->login($this->user);
+            return redirect()->to('/');
+        }
+        $this->addError('email', 'Учетные данные не верны.');
+    }
+
     protected function checkIsAdmin()
     {
         return $this->user->isAdmin;
