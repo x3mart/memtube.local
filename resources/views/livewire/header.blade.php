@@ -63,7 +63,7 @@
                                     </p>
                                     <p>Забыли <a href="#" style="color:#140032;">пароль?</a></p>
                                 </div>
-                                <button wire:loading.attr="disabled" type="button" class="btn btn-outline-info waves-effect ml-auto"
+                                <button wire:loading.attr="disabled" @click.prevent="open=false" type="button" class="btn btn-outline-info waves-effect ml-auto"
                                         data-dismiss="modal">Закрыть
                                 </button>
                             </div>
@@ -129,7 +129,7 @@
                                     <p class="pt-1">Зарегистрированы? <a data-toggle="tab" href="#panel7" role="tab"
                                                                          style="color:#140032;">Войти</a></p>
                                 </div>
-                                <button type="button" wire:loading.attr="disabled" class="btn btn-outline-info waves-effect ml-auto"
+                                <button type="button" @click.prevent="open=false" wire:loading.attr="disabled" class="btn btn-outline-info waves-effect ml-auto"
                                         data-dismiss="modal">Закрыть
                                 </button>
                             </div>
@@ -143,7 +143,7 @@
     </div>
     <!--Modal: Login / Register Form-->
     {{-- modal change password --}}
-    <div class="modal-dialog cascading-modal" role="document" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="change_password">
+    <div class="modal-dialog cascading-modal" role="document" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="change_password" @click.away="change_password = false">
         <div class="modal-content">
             <!--Modal cascading tabs-->
             <div class="modal-c-tabs">
