@@ -1,4 +1,4 @@
-<div x-data="{'showModal': @entangle('showModal')}" @click.away="showModal = false" style="display:none; position: fixed; z-index: 10; top: 20%; left 40%;" x-show.transition.500="showModal">
+<div x-data="{'showModal': @entangle('showModal')}" @click.away="showModal = false" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header text-center">
