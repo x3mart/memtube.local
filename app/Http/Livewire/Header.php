@@ -29,7 +29,7 @@ class Header extends Component
         'password.required' => 'Обязательное поле.',
         'new_password.min' => 'Пароль минимум 6 символов',
         'new_password.required' => 'Обязательное поле.',
-        'password_confirmatio.same' => 'Пароли долны совпадать',
+        'password_confirmation.same' => 'Пароли долны совпадать',
     ];
 
     protected $rules = [
