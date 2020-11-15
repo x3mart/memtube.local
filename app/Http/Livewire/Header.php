@@ -59,8 +59,9 @@ class Header extends Component
     public function authUser()
     {
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+            $this->setUser();
             return redirect()->to('/');
-          }
+        }
         $this->addError('email', 'Учетные данные не верны.');
     }
 
