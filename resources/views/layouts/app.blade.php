@@ -24,8 +24,8 @@
     <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
     <style>
        .video-js .vjs-big-play-button {
-        top: 60px;
-        left: 80px;
+        top: 40%;
+        left: 30%;
        }
     </style>
 </head>
