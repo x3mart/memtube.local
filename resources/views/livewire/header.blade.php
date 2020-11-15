@@ -26,7 +26,7 @@
 
                             <!--Body-->
                             <div class="modal-body mb-1">
-                                <form method="POST" action="{{ route('login') }}">
+                                <form>
                                     @csrf
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-envelope prefix" style="color:#140032;"></i>
@@ -215,12 +215,7 @@
                                 @endif
                                    <a href="" @click.prevent="change_password=true"class="collapsible-header waves-effect"><i
                                            class="fas fa-lock"></i> Сменить пароль</a>
-                                    <a href="{{ route('logout') }}" class="collapsible-header waves-effect"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                            class="fas fa-sign-out-alt"></i> Выход</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                    <a href="#" wire:click.prevent="logoutUser" class="collapsible-header waves-effect"><i class="fas fa-sign-out-alt"></i> Выход</a>
                             </div>
                         </li>
                     @endguest

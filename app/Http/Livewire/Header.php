@@ -65,6 +65,12 @@ class Header extends Component
         $this->addError('email', 'Учетные данные не верны.');
     }
 
+    public function logoutUser()
+    {
+        Auth::logout();
+        return redirect()->to('/');
+    }
+
     protected function checkIsAdmin()
     {
         return $this->user->isAdmin;
