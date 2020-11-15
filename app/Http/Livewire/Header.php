@@ -20,6 +20,8 @@ class Header extends Component
     }
 
     protected $messages = [
+        'name.required' => 'Обязательное поле.',
+        'name.min' => 'Имя минимум 3 символа.',
         'email.required' => 'Обязательное поле.',
         'email.email' => 'Email в формате email@domain.com',
         'new_email.required' => 'Обязательное поле.',
