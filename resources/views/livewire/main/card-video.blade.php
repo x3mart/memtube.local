@@ -5,7 +5,7 @@
             id="my-video-{{ $video->id }}"
             class="video-js"
             controls
-            preload="metadata"
+            preload="auto"
             width="255"
             height="170"
             data-setup="{}"
