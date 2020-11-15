@@ -1,4 +1,4 @@
-<div class="logo-section" x-data="{ login : true, open : false, change_password : false}">
+<div class="logo-section" x-data="{ login : true, open : false, change_password : false}"  @click.away="open = false">
     <!--Modal: Login / Register Form-->
     <div style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="open">
         <div class="modal-dialog cascading-modal" role="document">
