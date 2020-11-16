@@ -35,7 +35,7 @@
                 <div class="row">
                     @forelse ($videos as $item)
                         <!-- Card Wider -->
-                        <livewire:main.card-video :video="$item" :mode="$mode" :favorites="$favorite" :key="'video-'.$item->id.now()" >
+                        <livewire:main.card-video :video="$item" :mode="$mode" :favorites="$favorite" :key="'video-'.$item->id.time()" >
                         <!-- Card Wider -->
                     @empty
                         <div class="mx-auto">

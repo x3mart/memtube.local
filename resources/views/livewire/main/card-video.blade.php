@@ -1,4 +1,4 @@
-<div class="card card-cascade wider col-md-3 my-3">
+<div class="card card-cascade wider col-md-3 my-3" x-data="{tre : true}" x-show="tre">
     <!-- Card image -->
     <div class="view view-cascade overlay">
         <video
@@ -9,6 +9,7 @@
             width="255"
             height="170"
             data-setup="{}"
+            x-on:playing="$wire.increment()"
         >
             <source src="{{ asset($video->path) }}" type="video/mp4"/>
             <p class="vjs-no-js">
@@ -19,14 +20,6 @@
             </p>
         </video>
     </div>
-    <script>
-        document.addEventListener('livewire:load', function () {
-            let v = document.getElementById("my-video-{{ $video->id }}");
-            v.addEventListener("playing", function() { 
-                @this.increment();
-            });
-        })
-    </script>
     <!-- Card content -->
     <div class="card-body card-body-cascade px-2 py-1">
         <!-- Title -->
