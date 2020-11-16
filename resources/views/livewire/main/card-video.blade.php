@@ -1,6 +1,6 @@
 <div class="card card-cascade wider col-md-3 my-3">
     <!-- Card image -->
-    <div class="view view-cascade overlay" wire:ignore>
+    <div class="view view-cascade overlay">
         <video
             id="my-video-{{ $video->id }}"
             class="video-js"
@@ -19,13 +19,13 @@
             </p>
         </video>
     </div>
-    <script>
+    {{-- <script>
         var player = videojs('my-video-{{ $video->id }}');
 
         player.on('playing', function() {
             @this.increment()
         });
-    </script>
+    </script> --}}
     <!-- Card content -->
     <div class="card-body card-body-cascade px-2 py-1">
         <!-- Title -->
