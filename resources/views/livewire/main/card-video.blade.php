@@ -1,4 +1,4 @@
-<div class="card card-cascade wider col-md-3 my-3" x-data="{tre : true}" x-show="tre">
+<div class="card card-cascade wider col-md-4 col-lg-3 my-3" x-data="{tre : true}" x-show="tre">
     <!-- Card image -->
     <div class="view view-cascade overlay">
         <video
