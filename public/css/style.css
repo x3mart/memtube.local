@@ -2765,3 +2765,15 @@
     }
 }
 
+.video-frame {
+    width:255px;
+    height:170px;
+}
+
+@media (max-width: 768px) {
+  .video-frame {
+      width:100%;
+      height:auto;
+  }
+}
+

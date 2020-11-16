@@ -7,11 +7,9 @@
         <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
             <video
                 id="my-video-{{ $video->id }}"
-                class="video-js"
+                class="video-js video-frame"
                 controls
                 preload="metadata"
-                width="255"
-                height="170"
                 data-setup="{}"
             >
         <source src="{{ asset($video->path) }}" type="video/mp4"/>

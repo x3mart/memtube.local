@@ -3,11 +3,9 @@
     <div class="view view-cascade overlay">
         <video
             id="my-video-{{ $video->id }}"
-            class="video-js"
+            class="video-js video-frame"
             controls
-            preload="auto"
-            width="255"
-            height="170"
+            preload="metadata"
             data-setup="{}"
             x-on:ended="$wire.increment()"
         >
