@@ -24,7 +24,7 @@ class UploadVideoModal extends Component
             'video' => 'mimes:mp4,mp4v,mpg4,mkv',
             'title' => 'string|required',
         ]);
-        $img = $this->video->storeAs('video', Str::of($this->title)->slug('_').'.'.$this->video->getClientOriginalExtension());
+        $img = $this->video->storeAs('video', Str::of($this->title)->slug('_').'_'.time().'.'.$this->video->getClientOriginalExtension());
         $newVideo = Video::create(['title' => Str::lower($this->title), 'path' => $img, 'slug' => $img]);
         $tagsNames = Str::of($this->tags)->explode(' ')->filter();
         foreach ($tagsNames as $item){

@@ -9,7 +9,7 @@
                 id="my-video"
                 class="video-js"
                 controls
-                preload="auto"
+                preload="metadata"
                 width="255"
                 height="170"
                 data-setup="{}"
