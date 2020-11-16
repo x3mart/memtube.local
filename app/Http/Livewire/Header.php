@@ -58,7 +58,7 @@ class Header extends Component
     public function authUser()
     {
         $this->validate([
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email',
             'password' => 'string|min:3',
         ]);
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
