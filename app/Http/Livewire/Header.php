@@ -37,7 +37,6 @@ class Header extends Component
     protected $rules = [
         'name' => 'min:3',
         'email' => 'email',
-        'password' => 'min:6',
         'new_email' => 'email|unique:users,email',
         'new_password' => 'min:6',
         'password_confirmation' => 'same:new_password'
@@ -58,6 +57,10 @@ class Header extends Component
 
     public function authUser()
     {
+        $this->validate([
+            'email' => 'required|email|unique:users,email',
+            'password' => 'string|min:3',
+        ]);
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             $this->setUser();
             return redirect()->to('/');

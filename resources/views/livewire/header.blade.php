@@ -57,12 +57,6 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
-                                <div class="options text-center text-md-right mt-1">
-                                    <p>Еще не с нами? <a data-toggle="tab" href="#panel8" style="color:#140032;"
-                                                         role="tab">Регистрация</a>
-                                    </p>
-                                    <p>Забыли <a href="#" style="color:#140032;">пароль?</a></p>
-                                </div>
                                 <button wire:loading.attr="disabled" @click.prevent="open=false" type="button" class="btn btn-outline-info waves-effect ml-auto"
                                         data-dismiss="modal">Закрыть
                                 </button>
@@ -125,10 +119,6 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
-                                <div class="options text-right">
-                                    <p class="pt-1">Зарегистрированы? <a data-toggle="tab" href="#panel7" role="tab"
-                                                                         style="color:#140032;">Войти</a></p>
-                                </div>
                                 <button type="button" @click.prevent="open=false" wire:loading.attr="disabled" class="btn btn-outline-info waves-effect ml-auto"
                                         data-dismiss="modal">Закрыть
                                 </button>
