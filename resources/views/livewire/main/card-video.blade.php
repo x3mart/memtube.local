@@ -30,7 +30,7 @@
         </h5>
         <!-- Text -->
         <div class="text-center card-text my-0" style="font-size: 12px;">
-            @forelse ($video->tags->slice(-3) as $tag)
+            @forelse ($video->tags->slice(0, 3) as $tag)
                 <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
             @empty
                 тэгов нет
@@ -42,7 +42,7 @@
                         еще {{ $video->tags->count() - 3 }}
                     </a>
                     <div class="dropdown-menu dropdown-primary" style="max-width:300px;white-space: normal;z-index: 999!important;">
-                        @foreach ($video->tags as $tag)
+                        @foreach ($video->tags->splice(3) as $tag)
                             <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
                         @endforeach
                     </div>
