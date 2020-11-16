@@ -80,7 +80,7 @@ class Main extends Component
         $tags = Str::of($this->search)->explode(' ');
         $this->videos = $allVideos->where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
             $query->whereIn('tag', $tags);
-        })->with('tags')->take($this->limit)->get()->sortByDesc($this->order);
+        })->with('tags')->orderBy($this->order, 'DESC')->take($this->limit)->get();
         $this->videosCount = $allVideos->count();
     }
 
