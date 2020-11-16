@@ -9,7 +9,7 @@
             width="255"
             height="170"
             data-setup="{}"
-            x-on:playing="$wire.increment()"
+            x-on:ended="$wire.increment()"
         >
             <source src="{{ asset($video->path) }}" type="video/mp4"/>
             <p class="vjs-no-js">
