@@ -19,13 +19,14 @@
             </p>
         </video>
     </div>
-    {{-- <script>
-        var player = videojs('my-video-{{ $video->id }}');
-
-        player.on('playing', function() {
-            @this.increment()
-        });
-    </script> --}}
+    <script>
+        document.addEventListener('livewire:load', function () {
+            let v = document.getElementById("my-video-{{ $video->id }}");
+            v.addEventListener("playing", function() { 
+                @this.increment();
+            });
+        })
+    </script>
     <!-- Card content -->
     <div class="card-body card-body-cascade px-2 py-1">
         <!-- Title -->
@@ -37,7 +38,7 @@
             @endif
         </h5>
         <!-- Text -->
-        <p class="text-center card-text my-0" style="font-size: 12px;">
+        <div class="text-center card-text my-0" style="font-size: 12px;">
             @forelse ($video->tags->slice(-3) as $tag)
                 <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
             @empty
@@ -45,16 +46,18 @@
             @endforelse
             <!--Menu-->
             @if ($video->tags->count() > 3)
-                <a id="dropdownMTags" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    еще {{ $video->tags->count() - 3 }}
-                </a>
-                <div class="dropdown-menu dropdown-primary" style="max-width:300px;white-space: normal;">
-                    @foreach ($video->tags as $tag)
-                        <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
-                    @endforeach
+                <div class="dropdown d-inline-block">
+                    <a id="dropdownTags" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        еще {{ $video->tags->count() - 3 }}
+                    </a>
+                    <div class="dropdown-menu dropdown-primary" style="max-width:300px;white-space: normal;z-index: 999!important;">
+                        @foreach ($video->tags as $tag)
+                            <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
+                        @endforeach
+                    </div>
                 </div>
             @endif
-        </p>
+        </div>
         <div style="display: inline-block; text-align: left; color: grey; width: 48%;">
             <a href="#" style="font-size: 12px; text-align: left; color: grey;">
                 <i class="far fa-eye"></i>{{ $video->views }}

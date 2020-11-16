@@ -4,7 +4,7 @@
     <div class="col-sm-4 col-xl-3">
 
         <!-- Featured image -->
-        <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4" wire:ignore>
+        <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
             <video
                 id="my-video-{{ $video->id }}"
                 class="video-js"
