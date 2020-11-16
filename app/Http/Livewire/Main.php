@@ -78,10 +78,11 @@ class Main extends Component
             $allVideos = new  Video;
         }
         $tags = Str::of($this->search)->explode(' ');
-        $this->videos = $allVideos->where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
+        $unlimitVideos = $allVideos->where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
             $query->whereIn('tag', $tags);
-        })->with('tags')->orderBy($this->order, 'DESC')->take($this->limit)->get();
-        $this->videosCount = $allVideos->count();
+        })->with('tags')->orderBy($this->order, 'DESC');
+        $this->videos = $unlimitVideos->take($this->limit)->get();
+        $this->videosCount = $unlimitVideos->count();
     }
 
     protected function setOrder()
