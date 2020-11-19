@@ -24,7 +24,13 @@
     <link rel="icon" type="image/png" href="{{ asset('img/fav32х.png') }}">
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+">
         <livewire:header />
         @yield('content')
         <livewire:footer />
