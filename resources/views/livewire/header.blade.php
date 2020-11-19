@@ -178,13 +178,7 @@
             <div class="navbar-nav nav-flex-icons">
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
-                        <a href="facebook.com" class="nav-link"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="vk.ru" class="nav-link"><i class="fab fa-vk"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.instagram.com/mariia_nibiru/" target="_blank" class="nav-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/mariia.nibiru/" target="_blank" class="nav-link">@mariia.nibiru <i class="fab fa-instagram"></i></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-5">
