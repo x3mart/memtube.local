@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Video;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class AdminVideoEdit extends Component
 {
@@ -12,7 +13,7 @@ class AdminVideoEdit extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $tags;
+    public $tags, $search;
 
     protected $listeners = ['videoDeleted', 'videoCreated'];
 
@@ -29,6 +30,15 @@ class AdminVideoEdit extends Component
         return redirect()->to('/');
     }
 
+    protected function getVideoList()
+    {
+        $tags = Str::of($this->search)->explode(' ');
+        $this->videos = Video::where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
+            $query->whereIn('tag', $tags);
+        });
+    }
+
+
     public function videoDeleted()
     {
 
@@ -41,8 +51,9 @@ class AdminVideoEdit extends Component
 
     public function render()
     {
+        $this->getVideoList();
         return view('livewire.admin-video-edit',
-        ['videos' => Video::with('tags')
+        ['videos' => $this->videos->with('tags')
                     ->orderBy('created_at','DESC')
                     ->paginate(8)])
                     ->extends('layouts.app')

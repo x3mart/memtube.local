@@ -1,5 +1,9 @@
-<div>
-    <div class="container mt-5">
+<div class="container">
+    <div class=" active-purple-4 mb-4 card" style="font-size: 2rem; margin-top: -22px;">
+        <input class="form-control form-control-lg" type="text" placeholder="Поиск" id="prefixInside"
+                aria-label="Search" wire:model="search">
+    </div>
+    <div class="mt-5">
         <!--Section: Content-->
         <section>
 
