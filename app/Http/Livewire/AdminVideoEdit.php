@@ -29,11 +29,6 @@ class AdminVideoEdit extends Component
         return redirect()->to('/');
     }
 
-    // protected function getVideos()
-    // {
-    //     $this->videos =
-    // }
-
     public function videoDeleted()
     {
 
@@ -49,6 +44,8 @@ class AdminVideoEdit extends Component
         return view('livewire.admin-video-edit',
         ['videos' => Video::with('tags')
                     ->orderBy('created_at','DESC')
-                    ->paginate(8)]);
+                    ->paginate(8)])
+                    ->extends('layouts.app')
+                    ->section('content');
     }
 }

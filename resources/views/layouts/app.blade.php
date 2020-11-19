@@ -26,7 +26,7 @@
 <body>
     <div id="app">
         <livewire:header />
-        {{ $slot }}
+        @yield('content')
         <livewire:footer />
     </div>
     <livewire:scripts />

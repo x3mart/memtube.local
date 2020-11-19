@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', Main::class, '__invoke')->name('home');
 Route::get('/admin', AdminVideoEdit::class, '__invoke')->middleware('auth')->name('admin');
 Route::get('/login', Main::class, '__invoke')->name('login');

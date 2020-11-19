@@ -57,6 +57,7 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
+                                <p>Забыли <a href="{{ route('password.request') }}" style="color:#140032;">пароль?</a></p>
                                 <button wire:loading.attr="disabled" @click.prevent="open=false" type="button" class="btn btn-outline-info waves-effect ml-auto"
                                         data-dismiss="modal">Закрыть
                                 </button>
