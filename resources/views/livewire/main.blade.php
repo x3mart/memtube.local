@@ -13,20 +13,20 @@
                 <div class="category-menu d-flex">
                     <ul class="mx-auto smooth-scroll">
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'date'}" wire:click.prevent="$set('sort', 'date')" href="#">Новинки </a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'date'}" wire:click.prevent="$set('sort', 'date')" href="">Новинки </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'top'}" wire:click.prevent="$set('sort', 'top')" href="#" >Топ</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'top'}" wire:click.prevent="$set('sort', 'top')" href="" >Топ</a>
                         </li>
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'all'}" wire:click.prevent="setToAll" href="#" >Все</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'all'}" wire:click.prevent="setToAll" href="" >Все</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'favorite'}" wire:click.prevent="setToFavorites" href="#" >Любимые</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'favorite'}" wire:click.prevent="setToFavorites" href="" >Любимые</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'download'}" wire:click.prevent="setToDownloads" href="#" >Загрузки</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': getMode == 'download'}" wire:click.prevent="setToDownloads" href="" >Загрузки</a>
                         </li>
                         @endauth
                     </ul>

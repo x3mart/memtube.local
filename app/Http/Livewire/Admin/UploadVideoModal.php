@@ -21,8 +21,9 @@ class UploadVideoModal extends Component
     public function saveNewVideo()
     {
         $this->validate([
-            'video' => 'mimes:mp4,mp4v,mpg4,mkv',
+            'video' => 'mimes:mp4,mp4v,mpg4,mkv|required',
             'title' => 'string|required',
+            'tags'  => 'string|nullable',
         ]);
         $img = $this->video->storeAs('video', Str::of($this->title)->slug('_').'_'.time().'.'.$this->video->getClientOriginalExtension());
         $newVideo = Video::create(['title' => Str::lower($this->title), 'path' => $img, 'slug' => $img]);

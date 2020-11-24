@@ -1,4 +1,8 @@
-<div x-data="{'showModal': @entangle('showModal')}" @click.away="showModal = false" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal">
+<div x-data="{ progress : 0, isUploading : false, 'showModal': @entangle('showModal') }" @click.away="showModal = false" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal"
+    x-on:livewire-upload-start="isUploading = true"
+    x-on:livewire-upload-finish="isUploading = false"
+    x-on:livewire-upload-error="isUploading = false"
+    x-on:livewire-upload-progress="progress = $event.detail.progress">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -32,9 +36,13 @@
                     <button wire:loading.attr="disabled" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect"
                             type="submit">Сохранить
                     </button>
-
                 </form>
-
+            </div>
+        </div>
+        <div class="loading-img-wrapper" x-show="isUploading">
+            <div x-text="progress + '%'"></div>
+            <div class="skills-item-meter" >
+                <span class="skills-item-meter-active bg-primary skills-animate" :style="'opacity: 1; width: ' + progress + '%'"></span>
             </div>
         </div>
     </div>

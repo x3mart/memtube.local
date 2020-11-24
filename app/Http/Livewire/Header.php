@@ -28,7 +28,7 @@ class Header extends Component
         'new_email.email' => 'Email в формате email@domain.com',
         'new_email.unique' => 'Эта почта уже зарегистрированна',
         'password.min' => 'Пароль минимум 6 символов',
-        'password.required' => 'Обязательное поле.',
+        'password.string' => 'Обязательное поле.',
         'new_password.min' => 'Пароль минимум 6 символов',
         'new_password.required' => 'Обязательное поле.',
         'password_confirmation.same' => 'Пароли должны совпадать',
@@ -59,7 +59,7 @@ class Header extends Component
     {
         $this->validate([
             'email' => 'required|email',
-            'password' => 'string|min:3',
+            'password' => 'string',
         ]);
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             $this->setUser();
