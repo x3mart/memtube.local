@@ -9,7 +9,6 @@
                        aria-label="Search" wire:model="search">
             </div>
             <!-- Section: Videos -->
-            @dump($order)
             <section id="services" class="mb-5">
                 <div class="category-menu d-flex">
                     <ul class="mx-auto smooth-scroll">
