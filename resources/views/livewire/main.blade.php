@@ -9,6 +9,7 @@
                        aria-label="Search" wire:model="search">
             </div>
             <!-- Section: Videos -->
+            @dump($order)
             <section id="services" class="mb-5">
                 <div class="category-menu d-flex">
                     <ul class="mx-auto smooth-scroll">
@@ -16,7 +17,7 @@
                             <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'date'}" wire:click.prevent="$set('sort', 'date')" href="">Новинки </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'top'}" wire:click.prevent="$set('sort', 'top')" href="" >Топ</a>
+                            <a class="nav-link waves-effect waves-light" x-bind:class="{'active-category': sortMode == 'top'}" wire:click.prevent="$set('sort', 'top')" href="">Топ</a>
                         </li>
                         @auth
                         <li class="nav-item">

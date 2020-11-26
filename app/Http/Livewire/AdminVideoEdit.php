@@ -55,7 +55,7 @@ class AdminVideoEdit extends Component
         return view('livewire.admin-video-edit',
         ['videos' => $this->videos->with('tags')
                     ->orderBy('created_at','DESC')
-                    ->paginate(8)])
+                    ->paginate(20)])
                     ->extends('layouts.app')
                     ->section('content');
     }

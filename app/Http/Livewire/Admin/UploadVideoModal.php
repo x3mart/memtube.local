@@ -26,7 +26,7 @@ class UploadVideoModal extends Component
             'tags'  => 'string|nullable',
         ]);
         $img = $this->video->storeAs('video', Str::of($this->title)->slug('_').'_'.time().'.'.$this->video->getClientOriginalExtension());
-        $newVideo = Video::create(['title' => Str::lower($this->title), 'path' => $img, 'slug' => $img]);
+        $newVideo = Video::create(['title' => Str::lower($this->title), 'path' => $img, 'slug' => $img, 'views' => 0]);
         $tagsNames = Str::of($this->tags)->explode(' ')->filter();
         foreach ($tagsNames as $item){
             if(!Tag::where('tag', $item)->first()){
