@@ -21,5 +21,5 @@ Auth::routes();
 Route::get('/', Main::class, '__invoke')->name('home');
 Route::get('/admin', AdminVideoEdit::class, '__invoke')->middleware('auth')->name('admin');
 Route::get('/login', Main::class, '__invoke')->name('login');
-Route::get('/getthumbnails', etThumbnails::class, '__invoke');
+// Route::get('/getthumbnails', etThumbnails::class, '__invoke');
 
