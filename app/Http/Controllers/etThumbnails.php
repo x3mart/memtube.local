@@ -27,10 +27,10 @@ class etThumbnails extends Controller
                     ->export()
                     ->toDisk('thumbnails')
                     ->save($video->slug.'.jpg');
-            $img = Image::make('thumbnails/'.$video->slug.'.jpg');
-            $img ->resize(255, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save();
+            // $img = Image::make('thumbnails/'.$video->slug.'.jpg');
+            // $img ->resize(255, null, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // })->save();
         }
 
     }
