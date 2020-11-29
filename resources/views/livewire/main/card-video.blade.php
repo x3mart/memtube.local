@@ -5,7 +5,7 @@
             id="my-video-{{ $video->id }}"
             class="video-js video-frame"
             controls
-            poster="{{ asset('video/'.$video->slug.'.png') }}"
+            poster="{{ asset('thumbnails/'.$video->slug.'.png') }}"
             preload="none"
             data-setup="{}"
             x-on:ended="$wire.increment()"

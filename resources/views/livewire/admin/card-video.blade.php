@@ -8,7 +8,7 @@
             <video
                 id="my-video-{{ $video->id }}"
                 class="video-js video-frame"
-                poster="{{ asset('video/'.$video->slug.'.png') }}"
+                poster="{{ asset('thumbnails/'.$video->slug.'.png') }}"
                 controls
                 preload="none"
                 data-setup="{}"
