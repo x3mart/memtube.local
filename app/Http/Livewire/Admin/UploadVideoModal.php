@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use FFMpeg\Format\Video\X264;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Livewire\Component;
 
 class UploadVideoModal extends Component
@@ -43,7 +44,11 @@ class UploadVideoModal extends Component
         $media->getFrameFromSeconds($duration/2)
                 ->export()
                 ->toDisk('thumbnails')
-                ->save($name.'.png');
+                ->save($name.'.jpg');
+        $img = Image::make('thumbnails/'.$newVideo->slug.'.jpg');
+        $img ->resize(255, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save();
         $tagsNames = Str::of($this->tags)->explode(' ')->filter();
         foreach ($tagsNames as $item){
             if(!Tag::where('tag', $item)->first()){
