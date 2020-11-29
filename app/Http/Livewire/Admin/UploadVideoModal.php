@@ -38,8 +38,9 @@ class UploadVideoModal extends Component
             Storage::delete($loadedVideo);
         }
         $newVideo = Video::create(['title' => Str::lower($this->title), 'path' => 'video/'.$name.'.mp4', 'slug' => $name, 'views' => 0]);
-        FFMpeg::open($newVideo->path)
-                ->getFrameFromSeconds(0)
+        $media = FFMpeg::open($newVideo->path);
+        $duration = $media->getDurationInSeconds();
+        $media->getFrameFromSeconds($duration/2)
                 ->export()
                 ->toDisk('thumbnails')
                 ->save($name.'.png');

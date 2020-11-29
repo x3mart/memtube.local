@@ -1,4 +1,4 @@
-<div x-data="{ progress : 0, isUploading : false, 'showModal': @entangle('showModal') }" @click.away="showModal = false" style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal"
+<div x-data="{ progress : 0, isUploading : false, 'showModal': @entangle('showModal') }"  style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false"
