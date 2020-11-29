@@ -55,6 +55,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'thumbnails' => [
+            'driver' => 'local',
+            'root' => storage_path('app/thumbnails'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'thumbnails',
+        ],
+
+        'video' => [
+            'driver' => 'local',
+            'root' => storage_path('app/video'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'video',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -81,6 +95,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('video') => storage_path('app/video'),
+        public_path('thumbnails') => storage_path('app/thumbnails'),
     ],
 
 ];

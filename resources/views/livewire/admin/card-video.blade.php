@@ -8,8 +8,9 @@
             <video
                 id="my-video-{{ $video->id }}"
                 class="video-js video-frame"
+                poster="{{ asset('thumbnails/'.$video->slug.'.png') }}"
                 controls
-                preload="metadata"
+                preload="none"
                 data-setup="{}"
             >
         <source src="{{ asset($video->path) }}" type="video/mp4"/>
