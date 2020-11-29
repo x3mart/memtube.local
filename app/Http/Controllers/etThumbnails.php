@@ -23,7 +23,7 @@ class etThumbnails extends Controller
         $duration = $media->getDurationInSeconds();
         $media->getFrameFromSeconds($duration/2)
                 ->export()
-                ->toDisk('thumbnails')
+                ->toDisk('video')
                 ->save($video->slug.'.png');
     }
     }
