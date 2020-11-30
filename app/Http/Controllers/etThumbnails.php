@@ -23,16 +23,16 @@ class etThumbnails extends Controller
         foreach ($videos as $video) {
             $media = FFMpeg::open($video->path);
             $duration = $media->getDurationInSeconds();
-            $media->getFrameFromSeconds($duration/2)
+            $media->getFrameFromSeconds(floor($duration/2))
                     ->export()
                     ->toDisk('thumbnails')
                     ->save($video->slug.'.jpg');
-            // $media = null;
-            // $img = Image::make('thumbnails/'.$video->slug.'.jpg');
-            // $img ->resize(255, null, function ($constraint) {
-            //     $constraint->aspectRatio();
-            // })->save();
-            // $img = null;
+            $media = null;
+            $img = Image::make('thumbnails/'.$video->slug.'.jpg');
+            $img ->resize(255, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save();
+            $img = null;
         }
         return redirect()->route('admin');
     }

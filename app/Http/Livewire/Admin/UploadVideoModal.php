@@ -41,7 +41,7 @@ class UploadVideoModal extends Component
         $newVideo = Video::create(['title' => Str::lower($this->title), 'path' => 'video/'.$name.'.mp4', 'slug' => $name, 'views' => 0]);
         $media = FFMpeg::open($newVideo->path);
         $duration = $media->getDurationInSeconds();
-        $media->getFrameFromSeconds($duration/2)
+        $media->getFrameFromSeconds(floor($duration/2))
                 ->export()
                 ->toDisk('thumbnails')
                 ->save($name.'.jpg');
