@@ -27,13 +27,14 @@ class etThumbnails extends Controller
                     ->export()
                     ->toDisk('thumbnails')
                     ->save($video->slug.'.jpg');
-            $media = null;
-            $img = Image::make('thumbnails/'.$video->slug.'.jpg');
-            $img ->resize(255, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save();
-            $img = null;
+            // $media = null;
+            // $img = Image::make('thumbnails/'.$video->slug.'.jpg');
+            // $img ->resize(255, null, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // })->save();
+            // $img = null;
         }
-
+        return redirect()->route('admin');
     }
+
 }
