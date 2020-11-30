@@ -20,7 +20,7 @@
         </video>
     </div>
     <!-- Card content -->
-    <div class="card-body card-body-cascade px-2 py-1">
+    <div class="card-body card-body-cascade px-2 py-1" style="z-index: unset;">
         <!-- Title -->
         <h5 class="mb-0 text-center">
             @if(Str::length($video->title) > 20)
