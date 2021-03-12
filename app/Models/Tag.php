@@ -13,6 +13,8 @@ class Tag extends Model
         'tag',
     ];
 
+    protected $touches = ['videos'];
+
     /**
      * Get Viodeos that haves this Tag
      */

@@ -1,6 +1,6 @@
 <div class="card card-cascade wider col-md-4 col-lg-3 my-3" x-data="{tre : true}" x-show="tre">
     <!-- Card image -->
-    <div class="view view-cascade overlay">
+    <div class="view view-cascade overlay" wire:ignore>
         <video
             id="my-video-{{ $video->id }}"
             class="video-js video-frame"

@@ -1,5 +1,5 @@
 <div class="container">
-    <div class=" active-purple-4 mb-4 card" style="font-size: 2rem; margin-top: -22px;">
+    <div class="mb-4 active-purple-4 card" style="font-size: 2rem; margin-top: -22px;">
         <input class="form-control form-control-lg" type="text" placeholder="Поиск" id="prefixInside"
                 aria-label="Search" wire:model="search">
     </div>
@@ -14,7 +14,7 @@
             </h4>
             <h3 class="d-flex align-items-center">
                 <span class="mr-auto">Управление видео</span>
-                <span class="ml-auto"><a wire:click.prevent="$emit('createVideo')" class="btn btn-success btn-md mx-0 btn-rounded">Добавить видео</a></span>
+                <span class="ml-auto"><a wire:click.prevent="$emit('createVideo')" class="mx-0 btn btn-success btn-md btn-rounded">Добавить видео</a></span>
             </h3>
             <hr class="mb-4">
 
