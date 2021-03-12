@@ -80,18 +80,12 @@ class Main extends Component
 
         $this->videosCount = $allVideos->count();
         if ($this->search) {
-            $constrain = new Video;
-            $allVideos = Video::with('tags')->orderBy('created_at','DESC');
-            $words = Str::of($this->search)->explode(' ');
+            $constrain = $allVideos;
+            $words = Str::of(trim($this->search))->explode(' ');
             foreach ($words as $word){
-                $searchResult = Video::search($word)->constrain($constrain)->query(function ($builder) {
+                $allVideos = Video::search($word)->constrain($constrain)->query(function ($builder) {
                     $builder->with('tags');
                 });
-                if ($searchResult->first()){
-                    $allVideos = $searchResult;
-                } else {
-                    $allVideos = $allVideos;
-                }
                 $constrain = Video::whereIn('id', $allVideos->get()->pluck('id'));
             }
         } else {
