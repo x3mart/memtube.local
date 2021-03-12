@@ -13,7 +13,7 @@ class AdminVideoEdit extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $tags, $search;
+    public $search;
 
     protected $listeners = ['videoDeleted', 'videoCreated'];
 
@@ -32,10 +32,24 @@ class AdminVideoEdit extends Component
 
     protected function getVideoList()
     {
-        $tags = Str::of($this->search)->explode(' ');
-        $this->videos = Video::where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
-            $query->whereIn('tag', $tags);
-        });
+        if ($this->search && $this->search != ' ') {
+            $constrain = new Video;
+            $this->videos = Video::with('tags')->orderBy('created_at','DESC');
+            $words = Str::of($this->search)->explode(' ');
+            foreach ($words as $word){
+                $searchResult = Video::search($word)->constrain($constrain)->query(function ($builder) {
+                    $builder->with('tags');
+                });
+                if ($searchResult->first()){
+                    $this->videos = $searchResult;
+                } else {
+                    $this->videos = $this->videos;
+                }
+                $constrain = Video::whereIn('id', $this->videos->get()->pluck('id'));
+            }
+        } else {
+            $this->videos = Video::with('tags')->orderBy('created_at','DESC');
+        }
     }
 
 
@@ -53,9 +67,7 @@ class AdminVideoEdit extends Component
     {
         $this->getVideoList();
         return view('livewire.admin-video-edit',
-        ['videos' => $this->videos->with('tags')
-                    ->orderBy('created_at','DESC')
-                    ->paginate(20)])
+        ['videos' => $this->videos->paginate(20)])
                     ->extends('layouts.app')
                     ->section('content');
     }

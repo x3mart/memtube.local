@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Video extends Model
 {
@@ -15,6 +16,22 @@ class Video extends Model
         'slug',
         'views',
     ];
+
+    use Searchable;
+
+    public $asYouType = true;
+
+    public function toSearchableArray()
+    {
+        $array = [
+            'id' => $this->id,
+            'title' => $this->title,
+            'tags' => $this->tags()->get(['tag'])->implode('tag', ' ')
+        ];
+
+        return $array;
+    }
+
 
     /**
      * Get that Video's Tags.

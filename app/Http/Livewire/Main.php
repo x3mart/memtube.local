@@ -77,12 +77,30 @@ class Main extends Component
         if($this->mode === 'all'){
             $allVideos = new  Video;
         }
-        $tags = Str::of($this->search)->explode(' ');
-        $unlimitVideos = $allVideos->where('title', 'like','%'.Str::lower($this->search).'%')->orWhereHas('tags', function($query) use ($tags){
-            $query->whereIn('tag', $tags);
-        })->orderBy($this->order, 'DESC')->with('tags');
-        $this->videos = $unlimitVideos->take($this->limit)->get();
-        $this->videosCount = $unlimitVideos->count();
+
+        $this->videosCount = $allVideos->count();
+        if ($this->search) {
+            $constrain = new Video;
+            $allVideos = Video::with('tags')->orderBy('created_at','DESC');
+            $words = Str::of($this->search)->explode(' ');
+            foreach ($words as $word){
+                $searchResult = Video::search($word)->constrain($constrain)->query(function ($builder) {
+                    $builder->with('tags');
+                });
+                if ($searchResult->first()){
+                    $allVideos = $searchResult;
+                } else {
+                    $allVideos = $allVideos;
+                }
+                $constrain = Video::whereIn('id', $allVideos->get()->pluck('id'));
+            }
+        } else {
+            $allVideos = $allVideos->with('tags');
+        }
+        $this->videos = $allVideos
+                        ->orderBy($this->order, 'DESC')
+                        ->take($this->limit)
+                        ->get();
     }
 
     protected function setOrder()
