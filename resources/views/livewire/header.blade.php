@@ -424,7 +424,7 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             <div class="memtube-logo">
                 <div style="
-                        top: 21%;
+                        top: 80%;
                         left: calc(50% - 100px);
                         width: 200px;
                         height: 24px;
