@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -12,11 +13,12 @@ class Header extends Component
     public $user;
     public $name;
     public $isAdmin;
-    public $email, $password, $password_confirmation, $new_password, $new_email;
+    public $email, $password, $password_confirmation, $new_password, $new_email, $videocount;
 
     public function mount()
     {
         $this->setUser();
+        $this->videocount = Video::count();
     }
 
     protected $messages = [

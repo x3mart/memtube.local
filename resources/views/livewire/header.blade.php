@@ -422,7 +422,20 @@
             <div class='atom'></div>
         </div>
         <a class="navbar-brand" href="{{ url('/') }}">
-            <div class="memtube-logo"></div>
+            <div class="memtube-logo">
+                <div style="
+                        top: 21%;
+                        left: calc(50% - 100px);
+                        width: 200px;
+                        height: 24px;
+                        margin: 0;
+                        color: white;
+                        font-size: 17px;
+                        font-weight: 800;
+                        text-align: center;">
+                    {{ $videocount }} видео
+                </div>
+            </div>
         </a>
 
     </div>
