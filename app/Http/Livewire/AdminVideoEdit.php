@@ -32,26 +32,17 @@ class AdminVideoEdit extends Component
 
     protected function getVideoList()
     {
-        $this->videos = Video::orderBy('created_at','DESC');
+        $constrain = new Video;
         if ($this->search) {
-            $constrain = $this->videos;
             $words = Str::of(trim($this->search))->explode(' ');
             foreach ($words as $word){
-                $searchResult = Video::search($word)->constrain($constrain)->query(function ($builder) {
-                    $builder->with('tags');
-                });
-                if ($searchResult->first()){
-                    $this->videos = $searchResult;
-                } else {
-                    $this->videos = $this->videos;
-                }
+                $this->videos = Video::search($word)->constrain($constrain);
                 $constrain = Video::whereIn('id', $this->videos->get()->pluck('id'));
             }
-        } else {
-            $this->videos = $this->videos->with('tags');
         }
+        $this->videos = $constrain->with('tags')->orderBy('created_at','DESC');
     }
-    
+
     public function videoDeleted()
     {
 
