@@ -77,21 +77,17 @@ class Main extends Component
         if($this->mode === 'all'){
             $allVideos = new  Video;
         }
-
-        $this->videosCount = $allVideos->count();
+        $constrain = $allVideos;
         if ($this->search) {
-            $constrain = $allVideos;
             $words = Str::of(trim($this->search))->explode(' ');
             foreach ($words as $word){
-                $allVideos = Video::search($word)->constrain($constrain)->query(function ($builder) {
-                    $builder->with('tags');
-                });
+                $allVideos = Video::search($word)->constrain($constrain);
                 $constrain = Video::whereIn('id', $allVideos->get()->pluck('id'));
             }
-        } else {
-            $allVideos = $allVideos->with('tags');
         }
-        $this->videos = $allVideos
+        $this->videosCount = $constrain->count();
+        $this->videos = $constrain
+                        ->with('tags')
                         ->orderBy($this->order, 'DESC')
                         ->take($this->limit)
                         ->get();
