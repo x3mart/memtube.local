@@ -3,6 +3,7 @@
 use App\Http\Controllers\etThumbnails;
 use App\Http\Livewire\AdminVideoEdit;
 use App\Http\Livewire\Main;
+use App\Http\Livewire\SingleVideo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', Main::class, '__invoke')->name('home');
+Route::get('/videos/{slug}', SingleVideo::class, '__invoke')->name('video');
 Route::get('/admin', AdminVideoEdit::class, '__invoke')->middleware('auth')->name('admin');
 Route::get('/login', Main::class, '__invoke')->name('login');
 Route::get('/getthumbnails', etThumbnails::class, '__invoke');

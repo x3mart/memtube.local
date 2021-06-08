@@ -24,9 +24,9 @@
         <!-- Title -->
         <h5 class="mb-0 text-center">
             @if(Str::length($video->title) > 20)
-                <div data-toggle="tooltip" title="{{ $video->title }}">{{ Str::ucfirst(Str::limit( $video->title, 20)) }}</div>
+                <a href="{{ isset($video->page) ? route('video', $video->page->slug) : '#.' }}" data-toggle="tooltip" title="{{ $video->title }}">{{ Str::ucfirst(Str::limit( $video->title, 20)) }}</a>
             @else
-                {{ Str::ucfirst($video->title) }}
+                <a href="{{ isset($video->page) ? route('video', $video->page->slug) : '#.' }}">{{ Str::ucfirst($video->title) }}</a>
             @endif
         </h5>
         <!-- Text -->

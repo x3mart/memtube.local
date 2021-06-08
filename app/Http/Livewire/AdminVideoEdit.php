@@ -13,9 +13,9 @@ class AdminVideoEdit extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $search;
+    public $search, $showEditSeo = false;
 
-    protected $listeners = ['videoDeleted', 'videoCreated'];
+    protected $listeners = ['videoDeleted', 'videoCreated', 'endEditSeo'];
 
     public function mount()
     {
@@ -43,22 +43,32 @@ class AdminVideoEdit extends Component
         $this->videos = $constrain->with('tags')->orderBy('created_at','DESC');
     }
 
-    public function videoDeleted()
+    public function endEditSeo()
     {
-
+        $this->showEditSeo = false;
     }
 
-    public function videoCreated()
+    public function editSeo()
     {
-
+        $this->showEditSeo = true;
     }
+
+    // public function videoDeleted()
+    // {
+
+    // }
+
+    // public function videoCreated()
+    // {
+
+    // }
 
     public function render()
     {
         $this->getVideoList();
         return view('livewire.admin-video-edit',
         ['videos' => $this->videos->paginate(20)])
-                    ->extends('layouts.app')
-                    ->section('content');
+                    ->layout('layouts.app')
+                    ->slot('content');
     }
 }

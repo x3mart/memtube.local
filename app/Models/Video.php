@@ -64,4 +64,9 @@ class Video extends Model
     {
         return $this->belongsToMany('App\Models\User', 'views');
     }
+
+    public function page()
+    {
+        return $this->hasOne(Page::class);
+    }
 }

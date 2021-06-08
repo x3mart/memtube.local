@@ -3,13 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Seo;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use App\Models\Video;
 use Illuminate\Support\Str;
 
 class Main extends Component
 {
-    public $user, $videos, $viewed, $order, $videosCount;
+    public $user, $videos, $viewed, $order, $videosCount, $meta;
     public $sort = 'date';
     public $limit = 8;
     public $search = '';
@@ -23,6 +25,9 @@ class Main extends Component
     public function mount()
     {
         $this->setUserData();
+        $this->meta = Seo::whereHas('page', function (Builder $query) {
+            $query->where('slug', 'allvideosmainpage');
+        })->first();
     }
 
     public function setUserData()
@@ -87,7 +92,7 @@ class Main extends Component
         }
         $this->videosCount = $constrain->count();
         $this->videos = $constrain
-                        ->with('tags')
+                        ->with('tags', 'page')
                         ->orderBy($this->order, 'DESC')
                         ->take($this->limit)
                         ->get();
@@ -120,7 +125,7 @@ class Main extends Component
         $this->getVideoList();
 
         return view('livewire.main')
-            ->extends('layouts.app')
-            ->section('content');
+            ->layout('layouts.app', ['meta' => $this->meta])
+            ->slot('content');
     }
 }

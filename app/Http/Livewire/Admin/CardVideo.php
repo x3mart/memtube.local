@@ -10,7 +10,9 @@ use Livewire\Component;
 
 class CardVideo extends Component
 {
-    public $video, $tag, $title, $titleEdit, $tags, $addTags;
+    public $video, $tag, $title, $titleEdit, $tags, $addTags, $editPage=false;
+
+    protected $listeners = ['endEditPage'];
 
     public function editTitle()
     {
@@ -61,6 +63,16 @@ class CardVideo extends Component
             $this->video->delete();
         });
         $this->emitUp('videoDeleted');
+    }
+
+    public function editPage()
+    {
+        $this->editPage = true;
+    }
+
+    public function endEditPage()
+    {
+        $this->editPage = false;
     }
 
     public function render()

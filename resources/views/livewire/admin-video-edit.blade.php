@@ -7,14 +7,17 @@
         <!--Section: Content-->
         <section>
 
-            <livewire:admin.upload-video-modal  :key="'modal-'.now()" />
+            <livewire:admin.upload-video-modal  :wire:key="'modal-'.now()" />
 
             <h4>
                 <a href="/"><i class="fas fa-home"></i> На главную</a>
             </h4>
             <h3 class="d-flex align-items-center">
                 <span class="mr-auto">Управление видео</span>
-                <span class="ml-auto"><a wire:click.prevent="$emit('createVideo')" class="mx-0 btn btn-success btn-md btn-rounded">Добавить видео</a></span>
+                <div class="ml-auto">
+                    <span ><a wire:click.prevent="$emit('createVideo')" class="mx-0 btn btn-success btn-md btn-rounded">Добавить видео</a></span>
+                    <span class="ml-3"><a wire:click.prevent="editSeo" class="mx-0 btn btn-success btn-md btn-rounded">Настроить SEO</a></span>
+                </div>
             </h3>
             <hr class="mb-4">
 
@@ -35,7 +38,8 @@
 
         </section>
         <!--Section: Content-->
-
-
     </div>
+    @if (!!$showEditSeo)
+    <livewire:admin.video-seo :wire:key="now()"/>
+    @endif
 </div>

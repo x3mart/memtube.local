@@ -69,6 +69,13 @@ return [
             'visibility' => 'video',
         ],
 
+        'summernote' => [
+            'driver' => 'local',
+            'root' => storage_path('app/summernote'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'summernote',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -96,6 +103,7 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('video') => storage_path('app/video'),
         public_path('thumbnails') => storage_path('app/thumbnails'),
+        public_path('summernote') => storage_path('app/summernote'),
     ],
 
 ];
