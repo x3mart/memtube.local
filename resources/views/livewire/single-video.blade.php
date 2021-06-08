@@ -2,7 +2,7 @@
     <!-- Main content -->
     <main>
         <!-- Section: Video -->
-        <section id="services" class="my-5">
+        <section id="services" class="mt-5">
             <div class="container">
                 <div class="d-flex justify-content-center position-relative">
                     <div class="to-home position-absolute" style="left: 0; top: 0;">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-5" style="background-color:#e9edf5">
+            <div class="my-5" style="background-color:#e9edf5">
                 <div class="container">
                     {!! $page->body !!}
                 </div>
