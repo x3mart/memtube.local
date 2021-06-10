@@ -53,15 +53,15 @@ class AdminVideoEdit extends Component
         $this->showEditSeo = true;
     }
 
-    // public function videoDeleted()
-    // {
+    public function videoDeleted()
+    {
 
-    // }
+    }
 
-    // public function videoCreated()
-    // {
+    public function videoCreated()
+    {
 
-    // }
+    }
 
     public function render()
     {
