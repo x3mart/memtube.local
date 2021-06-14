@@ -17,9 +17,7 @@ class UploadVideoModal extends Component
     use WithFileUploads;
 
     public $video, $title, $tags;
-    public $showModal = false;
-
-    protected $listeners = ['createVideo'];
+    public $showModal = true;
 
     public function saveNewVideo()
     {
@@ -58,13 +56,8 @@ class UploadVideoModal extends Component
             }
             $newVideo->tags()->attach($tag);
         }
-        $this->showModal = false;
-        $this->emitUp('videoCreated');
-    }
-
-    public function createVideo()
-    {
-        $this->showModal = true;
+        // $this->showModal = false;
+        $this->emitUp('closeUpload');
     }
 
     public function render()

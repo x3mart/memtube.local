@@ -13,9 +13,9 @@ class AdminVideoEdit extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $search, $showEditSeo = false;
+    public $search, $showEditSeo = false, $create = false;
 
-    protected $listeners = ['videoDeleted', 'videoCreated', 'endEditSeo'];
+    protected $listeners = ['videoDeleted', 'closeUpload', 'endEditSeo'];
 
     public function mount()
     {
@@ -58,9 +58,14 @@ class AdminVideoEdit extends Component
 
     }
 
-    public function videoCreated()
+    public function closeUpload()
     {
+        $this->create=false;
+    }
 
+    public function createVideo()
+    {
+        $this->create = true;
     }
 
     public function render()

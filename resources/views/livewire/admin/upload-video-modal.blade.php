@@ -1,4 +1,4 @@
-<div x-data="{ progress : 0, isUploading : false, 'showModal': @entangle('showModal') }"  style="display:none; position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal"
+<div x-data="{ progress : 0, isUploading : false, 'showModal': @entangle('showModal') }"  style="position: fixed; z-index: 10; top: 10%; left: 40%;" x-show.transition.500="showModal"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false"
@@ -7,7 +7,7 @@
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold">Добавление видео</h4>
-                <button type="button" wire:click.pevent="$set('showModal', false)" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" wire:click.pevent="$emitUp('closeUpload')" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
