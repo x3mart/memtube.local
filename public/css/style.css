@@ -1582,7 +1582,10 @@
         background-size: 100%;
         max-width: 300px;
         padding: 30px;
-}
+    }
+    .organism.atom {
+        display: none;
+    }
 }
 
 
