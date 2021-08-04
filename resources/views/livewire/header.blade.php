@@ -178,7 +178,7 @@
             <div class="navbar-nav nav-flex-icons">
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
-                        <a href="https://www.instagram.com/mariia.nibiru/" target="_blank" class="nav-link">@mariia.nibiru <i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/memtube.ru/" target="_blank" class="nav-link">@memtube.ru <i class="fab fa-instagram"></i></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-5">
