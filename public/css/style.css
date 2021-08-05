@@ -1583,7 +1583,10 @@
         max-width: 300px;
         padding: 30px;
     }
-    .organism.atom {
+    .organism {
+        display: none;
+    }
+    .navbar-brand {
         display: none;
     }
 }
