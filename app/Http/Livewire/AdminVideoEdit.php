@@ -73,7 +73,7 @@ class AdminVideoEdit extends Component
         $this->getVideoList();
         return view('livewire.admin-video-edit',
         ['videos' => $this->videos->paginate(20)])
-                    ->layout('layouts.app')
+                    ->layout('layouts.main')
                     ->slot('content');
     }
 }
