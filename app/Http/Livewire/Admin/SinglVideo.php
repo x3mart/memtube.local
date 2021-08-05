@@ -13,13 +13,14 @@ class SinglVideo extends Component
 {
     use WithFileUploads;
 
-    public $page, $page_video_id, $video, $page_seo, $photo;
+    public $page, $title, $page_video_id, $video, $page_seo, $photo;
 
     public function mount($video)
     {
         $this->showPageModal=true;
         $this->video = $video;
         $this->page = $this->get_page();
+        $this->title = $this->get_title();
         $this->page_seo = $this->get_seo();
     }
 
@@ -35,6 +36,10 @@ class SinglVideo extends Component
         return $page;
     }
 
+    public function get_title(){
+        return $this->page->title;
+    }
+
     public function get_seo()
     {
         if (!!!$this->page->seo){
@@ -44,11 +49,11 @@ class SinglVideo extends Component
     }
 
     protected $messages = [
-        'page.slug.unique' => 'Страница с таким названием уже существует.',
+        'title.unique' => 'Страница с таким названием уже существует.',
     ];
 
     protected $rules = [
-            'page.title' => 'string',
+            'title' => 'required|unique:pages',
             'page.body' => 'string',
             'page_seo.title' => 'string',
             'page_seo.keywords' => 'string',
@@ -58,11 +63,16 @@ class SinglVideo extends Component
 
     public function savePage()
     {
-        // $this->validate([
-        //     'page.title' => ['unique:pages,title', 'not_in:' . $this->page->title],
-        // ]);
-        $this->page->slug = Str::of($this->page->title)->slug('-');
-        $this->page->save();
+        $this->validate([
+            'title' => 'required|unique:pages,title,'.$this->page->id,
+            'page.body' => 'string',
+            'page_seo.title' => 'string',
+            'page_seo.keywords' => 'string',
+            'page_seo.description' => 'string',
+        ]);
+        $this->page->slug = Str::of($this->title)->slug('-');
+        $this->page->title = $this->title;
+        $this->page->update();
         $this->page_seo->save();
         $this->endEditPage();
     }
