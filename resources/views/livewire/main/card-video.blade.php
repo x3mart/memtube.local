@@ -42,6 +42,7 @@
                     <a id="dropdownTags" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         еще {{ $video->tags->count() - 3 }}
                     </a>
+                    
                     <div class="dropdown-menu dropdown-primary" style="max-width:300px;white-space: normal;z-index: 999!important;">
                         @foreach ($video->tags->splice(3) as $tag)
                             <a href="#" wire:click.prevent="$emitUp('setSearch', '{{ $tag->tag }}')">#{{ $tag->tag }} </a>
