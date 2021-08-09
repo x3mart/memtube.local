@@ -174,7 +174,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">MemTube</a>
+            <a class="navbar-brand navbar-logo" href="{{ url('/') }}">MemTube</a>
             <div class="navbar-nav nav-flex-icons">
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
