@@ -57,7 +57,7 @@ class SingleVideo extends Component
     public function render()
     {
         return view('livewire.single-video', ['video' => $this->video, 'page' => $this->page])
-            ->layout('layouts.app', ['meta' => $this->meta])
+            ->layout('layouts.main', ['meta' => $this->meta])
             ->slot('content');;
     }
 }

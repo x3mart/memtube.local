@@ -125,7 +125,7 @@ class Main extends Component
         $this->getVideoList();
 
         return view('livewire.main')
-            ->layout('layouts.app', ['meta' => $this->meta])
+            ->layout('layouts.main', ['meta' => $this->meta])
             ->slot('content');
     }
 }

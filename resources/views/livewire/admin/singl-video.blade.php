@@ -7,17 +7,19 @@
                 <span wire:click.prevent="endEditPage" aria-hidden="true">&times;</span>
             </button>
             </div>
-            <div class="modal-body" wire:ignore>
+            <div class="modal-body">
                 <input wire:model.defer='page_seo.title' type="text" class="form-control" placeholder="meta:title" aria-label="meta:title" aria-describedby="basic-addon1">
                 <input wire:model.defer='page_seo.keywords'type="text" class="form-control" placeholder="meta:keywords" aria-label="meta:keywords" aria-describedby="basic-addon1">
                 <input wire:model.defer='page_seo.description'type="text" class="form-control" placeholder="meta:description" aria-label="meta:description" aria-describedby="basic-addon1">
-                <input wire:model.defer='page.title'type="text" class="form-control" placeholder="page:title" aria-label="page:title" aria-describedby="basic-addon1">
-                @error('name') <span class="error">{{ $message }}</span> @enderror
+                <input wire:model='title'type="text" class="form-control @error('title') text-danger @enderror" placeholder="page:title" aria-label="page:title" aria-describedby="basic-addon1">
+                @error('title') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+            <div wire:ignore >
                 <div id="summernote-{{ $video->id }}">{!! $page->body !!}</div>
             </div>
             <div class="modal-footer">
-            <button type="submit"  wire:loading.attr="disabled" wire:target="savePage" class="btn btn-primary">Save changes</button>
-            <button type="button" wire:click.prevent="endEditPage" class="btn btn-secondary" wire:loading.attr="disabled" wire:target="savePage" data-dismiss="modal">Close</button>
+                <button type="submit"  wire:loading.attr="disabled" wire:target="savePage" class="btn btn-primary">Save changes</button>
+                <button type="button" wire:click.prevent="endEditPage" class="btn btn-secondary" wire:loading.attr="disabled" wire:target="savePage" data-dismiss="modal">Close</button>
             </div>
         </form>
     </div>
